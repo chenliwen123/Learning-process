@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>你好</title>
+	<style>
+		.box{width:1200px;margin:0 auto;}
+		.box a{display:block;float:left;}
+		.pingtai{float:left;width:400px;text-align:center;}
+		.iframe_uzi{width:100%;float:left;}
+		.iframe_uzi iframe{width:100%;height:630px;float:left;}
+		.video{float:left;width:100%;}
+		.video ul{margin:0;padding:0;float:left;list-style: none;}
+		.video ul li {float:left; padding:20px;background:#D13A3D;margin:0 10px;}
+		.video ul li:hover{cursor:pointer;}
+	</style>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+<base target="">
+</head>
+
+<body>
+	<div class="box" id="app">
+	    <a href="https://www.huya.com/l">
+			<div class="pingtai">
+				<img src="https://a.msstatic.com/huya/main/img/logo.png" alt="">
+			</div>
+		</a>
+	    <a href="https://www.douyu.com/directory/all/">
+			<div class="pingtai">
+				<img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3427267784,1152804775&fm=58&s=2B44D503F0A1AF011CBE7D670300C038&bpow=121&bpoh=75" alt="">
+			</div>
+		</a>
+	     <a href="https://www.bilibili.com/">
+			 <div class="pingtai">
+				 <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2810627290,1080409091&fm=58&s=8197C732C535FA313E526557030030BB&bpow=121&bpoh=75" alt="">
+			 </div>
+		</a>
+		<div class="video">
+			<ul>
+				<li class="uzi" onClick="show('http://liveshare.huya.com/iframe/uzi','uzi')">uzi</li>
+				<li class="qingwa" onClick="show('http://liveshare.huya.com/iframe/qingwa666','青蛙')">青蛙</li>
+				<li class="chenglong" onClick="show('http://liveshare.huya.com/iframe/11342386','成龙武打')">成龙武打</li>
+				<li class="adou" onClick="show('http://liveshare.huya.com/iframe/adgll','阿斗归来了')">阿斗归来了</li>
+				<li class="mlxg" onClick="show('https://staticlive.douyucdn.cn/common/share/play.swf?room_id=8733','mlxg')">mlxg</li>
+				<li class="wjg" onClick="show('https://staticlive.douyucdn.cn/common/share/play.swf?room_id=12306','稳健棍')">稳健棍</li>
+				<li class="faker" onClick="show('https://staticlive.douyucdn.cn/common/share/play.swf?room_id=1691127','faker')">faker</li>
+				<li class="zhouxingxing" onClick="show('http://liveshare.huya.com/iframe/11342412','周星星')">周星星</li>
+				<li class="xuxubaobao" onClick="show('https://staticlive.douyucdn.cn/common/share/play.swf?room_id=99999','旭旭宝宝')">旭旭宝宝</li>
+			</ul>
+		</div>
+		<!--主要显示位置-->
+		<div class="iframe_uzi">
+		   <iframe src="https://staticlive.douyucdn.cn/common/share/play.swf?room_id=8733" frameborder="0" id="iframe"></iframe>
+		</div>
+		<!--主要显示位置-->
+	</div>
+	<script>
+		function show(src_url,zb){
+		var zhubovideo=document.getElementById('iframe');
+			if(zhubovideo.src==src_url){
+				return -1;
+			}else{
+				zhubovideo.src=src_url;
+			}
+		document.title='正在直播'+zb;
+		}
+	</script>
+</body>
+</html>
