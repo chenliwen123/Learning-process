@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+	<style>
+		#p1{width:300px;height:100px;word-wrap: break-word;}
+	</style>
+</head>
+
+<body>
+	<textarea id="but1" class="butstyle"></textarea>
+	<p id="p1">你好啊！肥波</p>
+	<input type="button" value="提交" id="btn">
+<script>
+	var pas;
+	var but= document.getElementById('but1');
+	var value=document.getElementById('p1').innerHTML;
+	but.addEventListener('input',function(){
+		document.getElementById('p1').innerHTML=value+this.value;
+	});
+	var btn=document.getElementById('btn');
+	btn.addEventListener('click',function(){
+		alert('现在文本框中是'+but.value);
+		pas=prompt('请输入密码');
+		document.getElementById('p1').innerHTML=pas;
+	});
+	
+	const arr=[{name:"chenliwen"}];
+	const _arr=arr;
+	console.log(_arr);
+	arr.map(item => item.name = 'yanglele')
+	console.log(arr);
+	console.log(_arr);
+	
+/*	var p1=document.getElementById('p1').innerHTML;
+	console.log(p1);*/
+
+
+	/*setTimeout("alert('你好,就等了')",3000);
+	var btn= document.getElementsByClassName('butstyle')[0];
+	btn.addEventListener('input',abc);
+	function abc(){
+		console.log(1);
+	}
+	var i =parseInt(Math.random()*100);	
+	alert(i);
+	var but=document.getElementById('but1');
+	but.addEventListener('click',abc,false);
+	function abc(){
+		alert('绑定事件');
+	}
+	window.onload=function(){
+		var btn=document.getElementById('but1');
+		btn.onclick=function(){
+			alert('第一个事件');
+		}
+		btn.onclick=function(){
+			alert('第二个事件');
+		}
+		btn.onclick=function(){
+			alert('第三个事件');
+		}
+	}
+	var eventOne=function(){
+		alert('第一个监听事件');
+	}
+	function evetTwo(){
+		alert('第二个监听事件');
+	}
+	window.onload=function(){
+		var btn=document.getElementById('but1');
+		btn.addEventListener('click',eventOne,false);
+		btn.addEventListener('click',evetTwo,false);
+		btn.removeEventListener('click',eventOne);
+	};
+	var btn=document.getElementById('but1');
+	var butstyle=document.getElementsByClassName('butstyle');
+	butstyle[0].addEventListener('click',abc,);
+	function abc(){
+		alert(this.value);
+	}*/
+	
+</script>
+</body>
+</html>
