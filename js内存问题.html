@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js内存mode</title>
+</head>
+
+<body>
+	<input type="text" id="text1">
+	<p id="p1">你好</p>
+	<script>
+		/*
+		今天要实现一个例子！ 代码如下
+		*/
+		var val=document.getElementById('text1');
+		val.addEventListener('input',function(){
+			document.getElementById('p1').innerHTML=this.value;
+		});
+		/*
+		大概实现的功能是 想文本框里输入任何东西 下面的p就会显示出来  
+		document.getElementById('p1').innerHTML   这么写的时候 发现好费事  我想可不可以用c语言中的指针 指向他存的地址<br>
+		只修改他的地址就可以了  没必要在写这多
+		*/
+//(1)
+	/*const v=[{dizhi1:document.getElementById('p1').innerHTML},];//const 存储内存地址,用这个方式的时候     指针指向的地址是v数组的第一个对象  并不是第一个对象的dizhi1
+		console.log(v);
+		var txt=document.getElementById('text1');
+		txt.addEventListener('input',function(){
+			v[0].dizhi1=this.value;
+		});*/
+//(2)
+/*		var val;
+		const v=[document.getElementById('p1').innerHTML,]//  这个方法只是把第获取到的值当做v数组中的第一个 数 并不是把地址给它
+		console.log(v);
+		var txt=document.getElementById('text1');
+		txt.addEventListener('input',function(){
+			v[0]=this.value;
+		val=document.getElementById('p1').innerHTML;
+		console.log(val);
+		});*/
+		
+//(3)
+		//我刚去百度了！  百度说对象可以当做指针来用！ 我们现在来试一下
+		const v={dizhi:document.getElementById('p1').innerHTML,}//我写到这里的时候 我就发现 这和我们的第一个方法好像没有什么区别
+		console.log(v);
+	</script>
+</body>
+</html>
