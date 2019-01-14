@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>轮播图</title>
+	<style>
+		body,html{overflow-x:hidden;}
+		.main{width:1000px;margin:0 auto;}
+		.zwchz{width:600px;height:450px;position:relative;overflow: hidden;}
+		.zwchz:hover #por{background: rgba(0,0,0,0.24);left:0px;}
+		.zwchz:hover #dor{background: rgba(0,0,0,0.24);left:480px;}
+		.zwchz ul{height:450px;margin:0;padding:0;list-style: none;position:relative;top:0;left:0;z-index: 1;transition: all 0.3s;-o-transition:all 0.3s;-ms-transition:all 03s;-webkit-transition:all 0.3s;}
+		.zwchz ul li{width:600px;height:450px;float:left;}
+		#por{width:60px;height:80px;position:relative;top:-270px;left:-60px;border-bottom-right-radius:20px;border-top-right-radius:20px;transition:left 0.2s;}
+		#dor{width:60px;height:80px;position:relative;top:-270px;left:540px;border-bottom-left-radius:20px;border-top-left-radius:20px;transition:left 0.2s;}
+		#dor:hover,#por:hover{cursor:pointer;}
+	</style>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+	<div class="main"><!--最外层的盒子--->
+		<div class="zwchz"><!--本盒子控制轮播图大小--->
+		    <ul id="zwchz">
+		    	<li style="background: #C90003;"></li>
+		    	<li style="background: #109F70;"></li>
+		    	<li style="background: #8A08EC;"></li>
+		    </ul>
+			<ul>
+				<li id="por"></li>
+				<li id="dor"></li>
+			</ul>
+	   </div>
+	</div>
+	<script>
+		var	xskd=0;
+		var tv,tt,num,width;
+	$(function(){
+		num=$('#zwchz li').length;
+		console.log(num);
+		width=$('#zwchz li').width();
+		var height=$('#zwchz li').height();
+		var ulwidth=$('#zwchz').css({width:width*num+'px'});
+		var tt=window.setInterval('zhixing()',2000);
+		var por=document.getElementById('por');
+		por.addEventListener('click',function(){
+			setTimeout('zhixing()',0);
+		});
+		var dor=document.getElementById('dor');
+		dor.addEventListener('click',function(){
+			setTimeout('zhixing2()',0);
+		});
+	});
+		function zhixing(){
+			xskd++;
+			if(xskd==num){
+				  xskd=0;
+				   }
+			$('#zwchz').css({left:-(xskd*width)+'px'});
+				
+		}
+		function zhixing2(){
+			xskd--;
+			if(xskd==-1){
+				  xskd=num-1;
+				   }
+			$('#zwchz').css({left:-(xskd*width)+'px'});
+		}
+	</script>
+</body>
+</html>
