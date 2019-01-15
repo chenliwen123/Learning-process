@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>构造函数</title>
+</head>
+
+<body>
+	<script>	
+	  function Person(){
+		  
+	  }
+		Person.prototype.name="chenliwen";//改变函数的原型 函数名.pretotype.属性="值";这种方式来改变函数的原型
+		var person=new Person();//创建person对象的时候 参考的原型是Person  上面我们给了原型的name值
+		console.log(person.name);//输出chenliwen
+		console.log(person.__proto__===Person.prototype)//TRUE
+		//对象.__proto__是 此对象的原型   //函数.prototype  这个是此函数的原型
+		
+		console.log(Person===Person.prototype.constructor);
+		//在函数原型.constructor得到的是原函数 注意：不是函数原型 是原函数
+		console.log(Object.getPrototypeOf(person)===Person.prototype);
+		//Object.getPetPrototypeOf(对象名)  获取对象原型
+	</script>
+</body>
+</html>
