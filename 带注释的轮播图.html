@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>转自站长素材</title>
+<style>
+*{margin:0; padding:0; list-style:none;}
+a{text-decoration:none;	color:#666;}
+a:hover{color:#1bc1a3;}
+body, hmtl{background: #ecf0f1; font-family: 'Anton', sans-serif;}
+#wrapper{
+	width:290px;
+	margin:0 auto;
+	height:300px;
+	position:relative;
+	color:#fff;
+	text-shadow:rgba(0,0,0,0.1) 2px 2px 0px;	
+}
+
+#slider-wrap{
+	width:290px;
+	height:300px;
+	position:relative;
+	overflow:hidden;
+}
+
+#slider-wrap ul#slider{
+	width:100%;
+	height:100%;
+	
+	position:absolute;
+	top:0;
+	left:0;		
+}
+
+#slider-wrap ul#slider li{
+	float:left;
+	position:relative;
+width:290px;
+	height:300px;
+}
+
+#slider-wrap ul#slider li > div{
+	position:absolute;
+}
+
+#slider-wrap ul#slider li > div h3{
+	font-size:36px;
+	text-transform:uppercase;	
+}
+
+#slider-wrap ul#slider li > div span{
+	font-family: Neucha, Arial, sans serif;
+	font-size:21px;
+}
+
+#slider-wrap ul#slider li i{
+	text-align:center;
+	line-height:300px;
+	display:block;
+	width:100%;
+	font-size:90px;	
+}
+
+
+/*btns*/
+.btns{
+	position:absolute;
+	width:50px;
+	height:60px;
+	top:50%;
+	margin-top:-25px;
+	line-height:57px;
+	text-align:center;
+	cursor:pointer;	
+	background:rgba(0,0,0,0.1);
+	z-index:100;
+	
+	
+	-webkit-user-select: none;  
+	-moz-user-select: none; 
+	-khtml-user-select: none; 
+	-ms-user-select: none;
+	
+	-webkit-transition: all 0.1s ease;
+	-moz-transition: all 0.1s ease;
+	-o-transition: all 0.1s ease;
+	-ms-transition: all 0.1s ease;
+	transition: all 0.1s ease;
+}
+
+.btns:hover{
+	background:rgba(0,0,0,0.3);	
+}
+
+#next{right:-50px; border-radius:7px 0px 0px 7px;}
+#previous{left:-50px; border-radius:0px 7px 7px 7px;}
+#counter{
+	top: 30px; 
+	right:35px; 
+	width:auto;
+	position:absolute;
+}
+
+#slider-wrap.active #next{right:0px;}
+#slider-wrap.active #previous{left:0px;}
+
+
+/*bar*/
+#pagination-wrap{
+	min-width:20px;
+	margin-top:350px;
+	margin-left: auto; 
+	margin-right: auto;
+	height:15px;
+	position:relative;
+	text-align:center;
+}
+
+#pagination-wrap ul {
+	width:100%;
+}
+
+#pagination-wrap ul li{
+	margin: 0 4px;
+	display: inline-block;
+	width:5px;
+	height:5px;
+	border-radius:50%;
+	background:#fff;
+	opacity:0.5;
+	position:relative;
+  top:0;
+  
+  
+}
+#pagination-wrap ul li.active{
+  width:12px;
+  height:12px;
+  top:3px;
+opacity:1;
+box-shadow:rgba(0,0,0,0.1) 1px 1px 0px;	
+}
+/*Header*/
+h1, h2{text-shadow:none; text-align:center;}
+h1{	color: #666; text-transform:uppercase;	font-size:36px;}
+h2{ color: #7f8c8d; font-family: Neucha, Arial, sans serif; font-size:18px; margin-bottom:30px;} 
+/*ANIMATION*/
+#slider-wrap ul, #pagination-wrap ul li{
+	-webkit-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	-moz-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	-o-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	-ms-transition: all 0.3s cubic-bezier(1,.01,.32,1);
+	transition: all 0.3s cubic-bezier(1,.01,.32,1);	
+}	
+</style>
+
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<div id="wrapper">
+	<h1>Title</h1>
+	<div id="slider-wrap">
+	  <ul id="slider">
+		 <li data-color="#1abc9c">
+			<div>
+				<h3>Slide #1</h3>
+				<span>Sub-title #1</span>
+			</div>                
+			<i class="fa fa-image"></i>
+		 </li>
+		 <li data-color="#3498db">
+			<div>
+				<h3>Slide #2</h3>
+				<span>Sub-title #2</span>
+			</div>
+			<i class="fa fa-gears"></i>
+		 </li>
+		 <li data-color="#9b59b6">
+			<div>
+				<h3>Slide #3</h3>
+				<span>Sub-title #3</span>
+			</div>
+			<i class="fa fa-sliders"></i>
+		 </li>
+		 
+		 <li data-color="#34495e">
+			<div>
+				<h3>Slide #4</h3>
+				<span>Sub-title #4</span>
+			</div>
+			<i class="fa fa-code"></i>
+		 </li>
+		 <li data-color="#e74c3c">
+			<div>
+				<h3>Slide #5</h3>
+				<span>Sub-title #5</span>
+			</div>
+			<i class="fa fa-microphone-slash"></i>
+		 </li>
+	  </ul>
+	   <!--controls-->
+	  <div class="btns" id="next"><i class="fa fa-arrow-right"></i></div>
+	  <div class="btns" id="previous"><i class="fa fa-arrow-left"></i></div>
+	  <div id="counter"></div>
+	  
+	  <div id="pagination-wrap">
+		<ul>
+		</ul>
+	  </div>
+	  <!--controls-->  
+	</div>
+</div>
+<script async>
+/*需要注意的是这段轮播图一定要放在css和html 后台不然获取的时候 会出现问题的*/
+var pos = 0;
+var totalSlides = $('#slider-wrap ul li').length;//5
+var sliderWidth = $('#slider-wrap').width();//290;   
+//var sli=document.getElementById('slider-wrap').offsetWidth;//在获取的时候  只是获取到数值！ 并不带单位
+//console.log(sli);
+$(document).ready(function(){
+	$('#slider-wrap ul#slider').width(sliderWidth*totalSlides);//5*290  给ul宽度1450,ul的id为slider
+	$('#next').click(function(){//点击id为next的标签   实现下一张
+		slideRight();//运行次函数
+	});
+	$('#previous').click(function(){//点击id为previous 的标签 实现上一张
+		slideLeft();//运行次函数
+	});
+	var autoSlider = setInterval(slideRight, 3000);//调用一次定时器
+	$.each($('#slider-wrap ul li'), function() {//遍历有多少个 在id为 slider-wrap 下个li 
+	   var c = $(this).attr("data-color");// 获取当前li的 data-color属性的值
+	   $(this).css("background",c);       //给当前li的背景色改为当前li标签属性的值
+	   var li = document.createElement('li');//创建li
+	   $('#pagination-wrap ul').append(li);	 //在 id为 pagination-wrap 里的ul 下追加li    主要是实现了  有多少个图片下面就有多少个小点点
+	});
+	countSlides();//改变右上角当前数值
+	pagination();//改变小圆点样式
+	$('#slider-wrap').hover(//鼠标放在 id 为slider-wrap上时执行
+	  function(){ $(this).addClass('active'); clearInterval(autoSlider); }, //增加class 是让左右  黑框显示    并且停止定时器
+	  function(){ $(this).removeClass('active'); autoSlider = setInterval(slideRight, 3000); }//启动定时器
+	);//jq .hove 有两个函数  中间用","分割  前一个是经过时的, 第二个函数是离开后
+});//DOCUMENT READY
+function slideLeft(){
+	pos--;
+	//上一张就当前li数减一
+	if(pos==-1){ pos = totalSlides-1; }//如果是第一张图片了还上一张的话,就把最后一张放过来
+	$('#slider-wrap ul#slider').css('left', -(sliderWidth*pos)); //290*当前li的个数	距离left的距离
+	countSlides();//改变右上角当前数值
+	pagination();//改变小圆点样式
+}
+function slideRight(){//此函数实现下一张
+	/*
+	totalSlides 变量是 li 个数
+	pos    用来存储当前是第几个li
+	*/
+	pos++;
+	if(pos==totalSlides){ pos = 0; }//判断是不是最后一个li  如果是的话pos等于0  相对于从头开始
+	$('#slider-wrap ul#slider').css('left', -(sliderWidth*pos)); //id为slider 的lu 移动 
+	countSlides();//改变右上角当前数值
+	pagination();//改变小圆点样式
+}
+function countSlides(){//右上角 有个显示 一共多少个轮播/当前是第几个轮播
+	$('#counter').html(pos+1 + ' / ' + totalSlides);
+}
+function pagination(){//
+	$('#pagination-wrap ul li').removeClass('active');//删除所有小圆点样式
+	$('#pagination-wrap ul li:eq('+pos+')').addClass('active');//给当前这个li 加小圆点样式
+}	
+</script>
+</body>
+</html>
