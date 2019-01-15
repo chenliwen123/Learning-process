@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+	<script>	
+		var _src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js";//把jquery 的线上路径给变量_src
+	var script=document.createElement('script');//创建script标签 给变量script
+		script.type="text/javascript"//给变量script中的script标签添加type属性值为"text/javascript"
+		script.src=_src;//把变量_src的值给srcipt变量中的src属性
+	    document.getElementsByTagName('head')[0].appendChild(script);//  这是在head标签后添加script变量中的标签
+		//appendChild 正常支持IE与谷歌
+	    //document.getElementsByTagName('head')[0].append(script);  //这是在head标签后添加script变量中的标签
+        //IE8-- IE11不支持append 谷歌正常支持这个属性
+	</script>
+</body>
+</html>
