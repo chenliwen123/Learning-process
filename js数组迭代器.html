@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js迭代器用法and实例</title>
+</head>
+<body>
+<script>
+	
+	/* forEach 方法
+	function chengfa(num){
+		alert(num*num);   //输入 1 4 9 16 25 36
+	}
+    var a=[1,2,3,4,5,6];
+    var b=a.forEach(chengfa);   //数组.forEach(函数) 没有返回值 undefined  
+	console.log(b);         //输出 undefined
+	*/
+	
+    /*every    
+	function isEven(num){
+		return num%2==0;
+	}
+	var a =[2,4,6,8,10];
+	var inAllEven=a.every(isEven);   //数组.every(函数) 把数组中每一个值都运行一次这个函数 每一次的返回值都是true 才返回ture  如果又一个false 则肥false
+	if(inAllEven){
+		alert('返回值是true');
+	}else{
+		alert('返回值是false');
+	}
+	console.log(inAllEven);//数组.every(函数) 只有两个返回值 true false
+	*/
+	
+	/* some 
+	var a=[1,2,3,5,7,9];
+	function isSome(num){
+		return num%2==0;
+	}
+	var b=a.some(isSome);  //数组.some(函数)   把数组中的每一个值都传给函数 函数有一个返回值是true  ，变量b则为true 当函数的返回值都是false时才返回false
+	console.log(b);
+	*/
+	
+	/*reduce
+	var nihao=5.1235;
+	console.log(typeof(nihao));
+	function inreduce(a,b){
+		return a+b;
+	}
+	var num=[1,2.2,3.2,4,5,6,7,8,9];
+	console.log(num.reduce(inreduce));// 数组.reduce(函数) 把数组中的数求和;前提数组是number类型
+	
+	//reduce 第二种用法
+	var s=["chen","li","wen"];
+	console.log(s.reduce(inreduce));// 数组.reduce(函数)  把数组链接到一起   前提数组是string类型
+	*/
+	/*
+	
+	以上是不生成新数组的方式 ,接下来是要生成新数组的方式
+	
+	*/
+	
+	/*map   遍历数组中的每一个下标
+	function firstAlpha(word){
+		return word[0].toUpperCase();
+	}
+	var words=["chen","li","wen"];
+	var a=words.map(firstAlpha);// 返回的是一个数组！
+	console.log(typeof(a));
+	//join 可以用在数组上   使其数组 改变成一个字符串
+	alert(a.join(""));*/
+	
+	function iseven(num){
+		return num%2==0;
+	}
+	var a=[1,2,4,6,8,10];
+	var b=a.filter(iseven);//把返回值是true 的克隆出来赋值给b
+	console.log(b);
+	
+	/*
+	我们刚刚学习了 forEach  是遍历数组 
+	             every   遍历数组 如果都满足条件的话返回true  如果其中有一个不满足则返回false
+	             some     遍历数组 有一个返回是true   则返回true   数组返回值都是false时，才返回false 
+				 reduce   把数组相加  如果数组是number类型 则返回是number 类型 
+				                    如果返回式string 类型 返回值就是 string
+									
+				接下来是迭代数组时生成新的数组的方法
+				
+				map       遍历数组 生成新的数组（与forEach非常相似）
+				filter    遍历数组 把满足条件的数组元素返回给新数组
+	*/
+</script>
+</body>
+</html>
