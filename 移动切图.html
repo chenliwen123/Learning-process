@@ -5,12 +5,40 @@
 <title>移动切图</title>
 <!----->
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<!--IE=edge如果客户端用ie,以客户的最高版本的ie渲染页面,
+    chrome=1强制使用谷歌引擎
+    实现最好的兼容性 需要把这个放在最上面-->
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" name="viewport">
+<!--device-width 这个打开页面时的宽度 也可以是640px
+    initial-scale 这个打开页面时的缩放 值在0.01-10，1.0是1：1缩放
+    maximum-scale,minimum-scale 允许最大的缩放值和最小的缩放值
+    user-scalable  有两个值 yes no
+                   如果 是yes是允许用户缩放 上面(maximum-scale,minimum-scale)的属性才可以用
+                   如果 是no 则不允许用户缩放 上面(maximum-scale,minimum-scale)的属性无作用-->
 <meta content="yes" name="apple-mobile-web-app-capable">
+<!--这个标签的作用是控制一些手机浏览器的自带浏览器的菜单，<br>
+    content 属性有两个值 : yes no
+    当这个标签属性为no时 是显示自带浏览器菜单 和不加这个标签没有区别
+    当这个标签属性为yes时 隐藏大部分手机浏览器菜单
+-->
 <meta content="black" name="apple-mobile-web-app-status-bar-style">
+<!--
+    content   手机访问时手机的其他部位 颜色  
+    black     黑色
+    black-translucent 半透明
+-->
 <meta content="telephone=no" name="format-detection">
+<!--
+    telephone  在ios 系统上电话会默认显示为超链接 它有两个值
+    yse(默认值) 在ios 上显示为超链接
+    no         在ios 上显示正常样式
+-->
 <meta content="email=no" name="format-detection">
-<!----->
+<!--
+    email 识别邮箱
+    yes(默认) 识别邮箱 
+    no       不识别邮箱 点击邮箱的时候 不自动跳转
+-->
 <script>
 	(function (doc, win) {
   var docEl = doc.documentElement,
