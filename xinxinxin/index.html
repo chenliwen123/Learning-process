@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>欢迎</title>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+	<script>
+        var string = "images/100310.png,images/100311.png,images/100312.png,images/100313.png,images/100314.png";   //原始数据
+        var array = string.split(",");           //用逗号分隔 转化成数组 判断 有一个逗号 转成一个字符串
+		var width,height,i,j;
+	    function myFunction() {
+			for(j=0;j<=10;j++){
+			 width =parseInt((Math.random()*1800));
+	         height=parseInt(Math.random()*750);
+             var value = array[Math.round(Math.random()*(array.length-1))];  //随机抽取一个值
+			//Math.round()这里面的值+0.5 然后向下取整
+			 $(".button").after("<div></div>");
+	      	 $("div:first").addClass("xin").css({"background":"url("+value+")"});
+		     $("div:first").animate({left:width,top:height},3000);
+			 $("div:first").fadeOut();
+}		 
+			setInterval("shanchu()");
+			}
+		function shanchu(){
+			if($("div:last").css("display")=="none"){
+			 $("div:last").remove();
+				 }
+		}
+		
+		setInterval("myFunction()",500)
+	</script>
+<style>
+	.xin{
+		width: 113px;
+		height:100px;
+		position:absolute;
+		top:500px;
+		left:800px;
+		opacity:1;
+		transform:scale(0.5,0.5);
+		/*animation: name 3s;
+		animation-fill-mode:forwards;   这段代码是让css 动画停止到最后一帧*/
+	}
+	.click{
+		width:600px;
+		height:400px;
+	}
+	.button{
+		background:rgba(255,255,255,0.00);
+		width:100px;
+		height:100px;
+		position:absolute;
+		top:530px;
+		left:600px;
+		border:2px rgba(255,255,255,0.00) solid;
+		font-size:16px;
+		color:#fff;
+		outline:none;
+	}
+	.button2{
+		float:left;
+	}
+	body{
+		
+		width:1900px;height:550px;
+	}
+	.float{
+		float:left;
+		height:720px;
+	}
+	</style>
+</head>
+<body>
+	<button class="button"></button>
+</body>
+</html>
