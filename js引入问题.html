@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js引入问题</title>
+</head>
+
+<body>
+<script>
+var _srcipt=document.createElement('script');	//创建script 标签
+	_srcipt.type="text/javascript"    //添加type  属性
+	_srcipt.defer="defer"    //添加type  属性     ，在加载完页面之后(</html>)在执行此js 
+	document.getElementsByTagName('head')[0].appendChild(_srcipt);  //在head后引入_script变量中的标签
+</script>
+</body>
+</html>
