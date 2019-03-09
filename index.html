@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nihao</title>
+</head>
+<body>
+<div class="nihao">
+    <ul class="zaijian">
+        <li>chen</li>
+        <li>li</li>
+        <li>wen</li>
+    </ul>
+</div>
+<script>
+    var  Ds=document.getElementsByClassName('zaijian')[0];
+    var  DL=Ds.getElementsByTagName('li').length;
+    for(var i=0;i<DL;i++)
+    {
+        Ds.getElementsByTagName('li')[i].classList.add('nihao');
+    }
+    console.log(Ds,DL);
+</script>
+</body>
+</html>
