@@ -7,7 +7,7 @@
     <div class="float-left pt-3">
       <form action="" class="form-size">
         <div class="input-group xiangdui">
-          <input type="text" placeholder="搜索商家或地点" class="form-control search" @focus="jujiao()" @blur="shijiao()">
+          <input type="text" placeholder="搜索商家或地点" class="form-control search " @focus="jujiao()" @blur="shijiao()">
           <div class="input-group-append">
             <button class="btn btn-yans"><span class="search_ico"></span></button>
           </div>
@@ -60,7 +60,7 @@ export default {
   .logoclass{width:126px;height:46px;float: left;}
   .logowidth{min-width:220px;}
   .form-size{width:550px;height:40px;}
-  .btn-yans{background:#13D1BE;width:80px; outline: none;}
+  .btn-yans{background:#13D1BE;width:80px; outline: none;border-top-right-radius:5px !important;border-bottom-right-radius:5px !important;}
   .search{border:1px solid #13D1BE !important;padding:10px;}
   .search_ico:before{content:"\e611";}
   .tuijian{font-size:13px;color:#999;}

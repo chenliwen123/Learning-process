@@ -126,7 +126,8 @@ jingguomove3(){
     },
     jingguomove4(){
       //这个函数是控制“我的美团”菜单隐藏
-      this.menuclass4="";if(this.menuclass4=="")this.xianshi4=false;},
+      this.menuclass4="";if(this.menuclass4=="")this.xianshi4=false;
+      },
   }
 }
 </script>
@@ -143,11 +144,11 @@ jingguomove3(){
   .zhuce{color:#000;}
   .zhuce:hover{color:#31BBAC;}
   .topright div a{cursor:pointer;color:#999;}
-  .wdmt{background:#fff;box-shadow:0px 10px 10px 2px #ddd;}
+  .wdmt{background:#fff;box-shadow:0px 10px 10px 2px rgba(0,0,0,.1);}
   .wdmt li:hover{color:#31BBAC;}
   .xiang{position:relative;}
   .wdmtlist{padding:0;margin:0;line-height:2rem;cursor:pointer;color:#999;position:absolute;top:45px;right:0;box-sizing:content-box;
-    border-bottom-left-radius:3px;border-bottom-right-radius:3px;z-index:100;}
+    border-bottom-left-radius:3px;border-bottom-right-radius:3px;z-index:101;background:#fff;}
   .w-160{width:160% !important;}
   .width100{width:calc(100% - 6rem);border-radius:3px;}
   .jdly{width:240px;margin-right:40px;}
