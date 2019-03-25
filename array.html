@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="centen">1,2,3,4,5,6,7,8,9</div>
+<input type="button" value="添加">
+<input type="button" value="删除">
+<input type="button" value="测试">
+<script>
+window.onload=function () {
+  let item=[];
+  let btn=document.getElementsByTagName('input');
+  let cen=document.getElementsByClassName('centen')[0];
+  btn[0].addEventListener('click',function () {
+    let arrt= getArray(cen.innerHTML);
+    arrt.unshift('0');
+   cen.innerHTML=arrt.join(',');
+  })
+  btn[1].addEventListener('click',function () {
+    let arrt=getArray(cen.innerHTML);
+    arrt.shift();
+    cen.innerHTML=arrt.join(',');
+  });
+  btn[2].addEventListener('click',function () {
+    let arrt=getArray(cen.innerHTML);
+    arrt.splice(7,2,'11','12')
+    cen.innerHTML=arrt.join(",");
+    let xmlhttp= new XMLHttpRequest;
+    xmlhttp.onreadystatechange=function () {
+      if (xmlhttp.readyState==4&&xmlhttp.status==200){
+        console.log(xmlhttp.responseText);
+        let index=JSON.parse(xmlhttp.responseText);
+        console.log(index.info)
+      }
+    }
+    xmlhttp.open("post","http://192.168.3.10:11112/index/index/nihao2",true);
+    xmlhttp.setRequestHeader("Content-Type","Application/x-www-form-urlencoded");
+    xmlhttp.send("works_domain="+"你好你好");
+  })
+  function getArray(str){
+    item.length=0;
+    str=str.split(",");
+    return str;
+  }
+
+}
+</script>
+</body>
+</html>
