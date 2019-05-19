@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+	<div style="height:10000px;"></div>
+	
+<script>
+/********************
+* 取窗口滚动条高度 
+******************/
+function getScrollTop()
+{
+    var scrollTop=0;
+    if(document.documentElement&&document.documentElement.scrollTop)
+    {
+        scrollTop=document.documentElement.scrollTop;
+    }
+    else if(document.body)
+    {
+        scrollTop=document.body.scrollTop;
+    }
+	//console.log(document.documentElement.scrollTop);   //scroll  滚动条
+    return scrollTop;
+}
+/********************
+* 取窗口可视范围的高度 
+*******************/
+function getClientHeight()
+{
+    var clientHeight=0;
+    if(document.body.clientHeight&&document.documentElement.clientHeight)
+    {
+        var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;        
+    }
+    else
+    {
+        var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;    
+    }
+	//client   显示高度
+    return clientHeight;
+}
+/********************
+* 取文档内容实际高度 
+*******************/
+function getScrollHeight()
+{
+    return Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
+	//取一个最大的高度
+}
+  function test(){
+ if (getScrollTop()+getClientHeight()==getScrollHeight()){
+  alert("到达底部");
+ }else{
+ }
+}
+	window.onscroll=function(){
+		test();
+	}
+	
+</script>
+</body>
+</html>
