@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="xingxing">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="info_1">
+
+    </div>
+<div class="info">
+</div>
+</div>
+<style>
+    .xingxing{width:500px;margin:0 auto;position:relative;}
+    ul{list-style: none;padding:0;margin:0;}
+    .xingxing ul li{background:url("./img/star.png") no-repeat;width:20px;height:20px;float:left;cursor:pointer;position:relative;}
+    .item{background:url("./img/star.png") no-repeat 0 -28px !important;}
+    .info{position:absolute;top:1px;left:135px;font-size:12px;}
+    .info span,.info_1 span{color:#f00000;}
+    .info_1{background:url("./img/icon.gif") no-repeat;width:160px;height:67px;font-size:12px;position:absolute;top:20px;left:20px;padding:10px 10px 0 10px;text-align:left;display:none;}
+
+</style>
+<script>
+window.onload=function () {
+  let oli=document.getElementsByClassName('xingxing')[0].getElementsByTagName('li');
+  let info_1=document.getElementsByClassName('info_1')[0];
+  let info=document.getElementsByClassName('info')[0];
+  let arr=[
+    "很不满意|差得太离谱，与卖家描述的严重不符，非常不满",
+    "不满意|部分有破损，与卖家描述的不符，不满意",
+    "一般|质量一般，没有卖家描述的那么好",
+    "满意|质量不错，与卖家描述的基本一致，还是挺满意的",
+    "非常满意|质量非常好，与卖家描述的完全一致，非常满意"
+  ];
+  for (let i=0;i<oli.length;i++){
+    oli[i].onmouseover=function () {
+      info_1.style.display="block";
+      info_1.innerHTML="<span>"+(i+1)+"分</span>"+arr[i].match("(.+)\|")[0];
+      for (let j=0;j<=i;j++){
+        oli[j].style.backgroundPositionY="-28px";
+      }
+      this.onclick=function () {
+        info.innerHTML="<span>"+(i+1)+"分</span>"+arr[i]
+        for (let j=0;j<oli.length;j++){
+          oli[j].classList.remove('item');
+        }
+        for (let j=0;j<=i;j++){
+          oli[j].classList.add('item');
+        }
+      }
+    };
+    oli[i].onmouseout=function () {
+      info_1.style.display="none";
+      for (let j=0;j<=i;j++){
+        oli[j].style.backgroundPositionY="0";
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>
