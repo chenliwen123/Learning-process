@@ -1,0 +1,64 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>完美拖拽</title>
+<style type="text/css">
+html,body{overflow:hidden;}
+body,div,h2,p{margin:0;padding:0;}
+body{color:#fff;background:#000;font:12px/2 Arial;}
+p{padding:0 10px;margin-top:10px;}
+span{color:#ff0;padding-left:5px;}
+#box{position:absolute;width:300px;height:150px;background:#333;border:2px solid #ccc;top:50%;left:50%;}
+#box h2{height:25px;cursor:move;background:#222;border-bottom:2px solid #ccc;text-align:right;padding:0 10px;}
+#box h2 a{color:#fff;font:12px/25px Arial;text-decoration:none;outline:none;}
+</style>
+</head>
+<body>
+<div id="box">
+    <h2><a href="javascript:;">点击回放拖动轨迹</a></h2>
+    <p><strong>Drag:</strong><span></span></p>
+    <p><strong>offsetTop:</strong><span></span></p>
+    <p><strong>offsetLeft:</strong><span></span></p>
+</div>
+<script type="text/javascript">
+	window.onload=function(){
+	let box=document.getElementById('box');
+	let bh2=box.getElementsByTagName('h2')[0];
+	let bspan=box.getElementsByTagName('span');
+	let drag=false;
+	let iL=iT=0;
+	status();
+		
+	bh2.addEventListener('mousedown',function(event){
+		drag=true;
+		var event = event || window.event;
+		iL=event.offsetX;
+		iT=event.offsetY;
+		status();
+	});
+	document.addEventListener('mousemove',function(event){
+		if(!drag)return false;
+		var event = event || window.event;
+		box.style.left=event.clientX-iL+"px";
+		box.style.top=event.clientY-iT+"px";
+		
+		status();
+	})
+	bh2.onmouseup=document.onmouseup=function(){
+		drag=false;
+		status();
+
+	}
+		
+		function status(){
+			bspan[0].innerHTML=drag;
+			bspan[1].innerHTML=box.offsetLeft;
+			bspan[2].innerHTML=box.offsetHeight;
+		}
+	}
+</script>
+
+</body>
+</html>
