@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js 点击事件</title>
+</head>
+
+<body>
+	<p id="p1">你好</p>
+	<input type="button" value="nihao" onClick="ni1()">
+	<input type="button" value="你好" id="bon1">
+	<input type="button" value="你好啊" id="bon2">
+	<script>	
+	var ni1=function(){
+			alert('你好');
+		}
+	//定义对象函数
+	alert(typeof(ni1));//返回的是function
+	ni1();//要带括号
+	document.getElementById('bon1').addEventListener('click',function(){
+		ni1();
+	});
+	document.getElementById('bon2').onclick=function(){ni1();};
+		// 原生的js 获取button元素.onclick=function(){}    onclick 后跟 "=" 等号
+	</script>
+	
+	<!-- IE  支持以上所有方法
+     -->
+</body>
+</html>

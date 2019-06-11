@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>检查为空</title>
+</head>
+
+<body>
+	来输入一定东西吧
+	输入的是数字
+	<input type="text" id="text" placeholder="la">
+	<input type="button" value="提交" id="bon1">
+	<script>
+	        document.getElementById('bon1').addEventListener('click',function(){
+			var x=document.getElementsByTagName('input')[0].value;
+			if(x==""||isNaN(x)){
+				alert('非法输入');
+			}else{
+				alert('没得问题');
+			}
+		});
+	</script>
+</body>
+</html>

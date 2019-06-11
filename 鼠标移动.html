@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>鼠标位置</title>
+</head>
+
+<body>
+	<script>
+	document.onkeydown=function(event){
+		var event =event || window.event;
+		console.log(event);
+			//alert(event.clientY+","+event.clientX);
+		    alert(event.keyCode);
+		
+		}
+//	document.onclick = function (event)
+//{
+//	var event = event || window.event;	
+//	alert("坐标：[" + event.clientX + ", " + event.clientY + "]")
+//}
+	</script>
+</body>
+</html>
