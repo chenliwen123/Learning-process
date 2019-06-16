@@ -13,4 +13,5 @@ http://fgm.cc/learn/
 ##1.1.1 parent js获取父级元素dom
 
 
-思考  js  parent 可不可以获取父级对象  我感觉没啥问题
+思考  js  parent 可不可以获取父级对象  我感觉没啥问题<br>
+js  parent  获取的是夫级的DOM元素 并不是夫级对象
