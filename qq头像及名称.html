@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="text1" placeholder="请输入QQ号">
+<iframe src="" id="iframe1" frameborder="0"></iframe>
+<p id="p1"></p>
+<button id="btn1">确定</button>
+<script>
+   window.onload=function () {
+
+
+
+
+       var text1=document.querySelector('#text1');
+       var iframe1=document.querySelector('#iframe1');
+       var btn1=document.querySelector('#btn1');
+       var p1=document.querySelector('#p1');
+
+
+
+
+var submit1=function(){
+    var xmlhttp=new XMLHttpRequest;
+    xmlhttp.onreadystatechange=function(){
+        if (xmlhttp.readyState == 4 && xmlhttp.status==200){
+            var index=JSON.parse(xmlhttp.responseText);
+            p1.innerHTML=index.data;
+            iframe1.src=index.image
+        }
+    }
+    xmlhttp.open('post','http://localhost:1027/index/Index/getqqnickname',true);
+    xmlhttp.setRequestHeader("Content-Type","Application/x-www-form-urlencoded");
+    xmlhttp.send('qq='+text1.value);
+}
+       btn1.addEventListener('click',submit1)
+       window.onkeydown=function(event){
+           var event=event || window.event;
+           if (event.keyCode==13){
+               submit1();
+           }
+       }
+   }
+//   querySelector 获取第一个元素
+//      querysSelectorALL  获取所有元素
+</script>
+</body>
+</html>

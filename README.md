@@ -9,3 +9,9 @@ http://fgm.cc/learn/
 
 这个里面从简单的到难的 都有
 我想这个练习题都能会  工作就没啥问题了
+
+##1.1.1 parent js获取父级元素dom
+
+
+思考  js  parent 可不可以获取父级对象  我感觉没啥问题<br>
+js  parent  获取的是夫级的DOM元素 并不是夫级对象
