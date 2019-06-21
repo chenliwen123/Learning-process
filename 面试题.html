@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+</head>
+<style>
+	input[type='text']{border:2px #f00000 solid;}
+</style>
+<body>
+<input type="text" id="text1">
+	<script>
+	    var text1=document.querySelectorAll("input[type='text']");
+		var input=document.querySelectorAll
+		//console.log(text1);
+		console.log(0.1+0.2);
+		console.log(0.1*10+0.2*10==0.3*10);
+		console.log(parseInt(0.1));
+		var n='123456789123456789111111111111111111111111';
+		var b=n.split('');
+		console.log(b);
+		var a=n.split('');
+		var index=0;
+		for(let i=1;i<b.length;i++){
+			if(i%3==0){
+				a.splice(i+index++,0,',');
+			}		
+		}
+		a.join(',');
+		console.log(a);
+		//split    字符串转换成数组
+		//splice   可以删除  可以添加   可以覆盖修改
+		//join     数组转成 字符串
+		//push     
+		//unshift   
+	</script>
+</body>
+</html>
