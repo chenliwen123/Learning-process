@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>es6作用域</title>
+</head>
+
+<body>
+	<script>
+	   window.onload=function(){
+		   for(let i=1;i<10;i++){}
+		   //console.log(i);//报错   i是块级作用域  var i  正常输出的10
+		   
+		   var a=[];
+		   for(let i=0;i<10;i++){//var i 用的一直是i的一个内存   let i 每次用完i 都要释放 从新定义
+			   a[i]=function(){
+				   console.log(i);
+			   }
+		   }
+		   a[6]();   //var定义 输出10  let 定义输出6
+		   
+		   /*
+		    let 不会像var 一样 提升变量   一定要在声明后使用
+		   */
+		   console.log(foor);//undefined  定义没赋值
+		   //console.log(heaad);//报错
+		   
+		   var foor=2;
+		   let heaad=2;
+		   
+		   /*
+		   暂时性死区
+		   */
+		   var abc='123';
+		   if(true){
+			   //abc='abc';//报错      凡是用let const  定义前使用就会报错
+			   let abc;
+		   }
+		   /*
+		   暂时性死区过程
+		   */
+		    if(true){
+				//tem='abc';//报错  死区报错
+				//console.log(tem);  //报错 他同上
+				
+				let tem;
+				console.log(tem);//undefined
+				
+				tem='abc';
+				console.log(tem);//abc
+				
+			}
+		   console.log(typeof undeclared);//undefined;   没有定义返回undefined 
+		   //console.log(typeof temp);     //   如果定义到后面 就报错
+		   let temp;
+		   
+		   //function bar(x=y,y=2){   // 从左向右运行 行到到x=y时 y还没有声明
+		   function bar(y=2,x=y){
+			   return [x,y];
+		   }
+		   console.log(bar());   //[2,2]
+	   }
+	</script>
+</body>
+</html>
