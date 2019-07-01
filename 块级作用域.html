@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>块级作用域</title>
+</head>
+
+<body>
+	<script>
+	var da=new Date();
+	function fn(){
+		console.log(da);
+		if(false){
+		   var da="hello wrold";
+		   }
+	}
+		fn(); //undefined;   
+		//下面的 da 把上面的覆盖了  并且没赋值
+
+		/*
+		 上面是es5 的写法  接下来我们用es6 来完善上面的写法
+		*/
+		
+		let j=5;
+		
+		function f1(){
+			console.log(j);
+			if(false){
+			  let j=10;
+			   }
+		}
+		f1();//5
+		
+		
+		var s="hello";
+		for(var i=0;i<s.length;i++){
+			console.log(s);
+		}
+		console.log(i); //泄露成全局变量
+		
+		{{{
+			{let insane="hello world"}
+	//		console.log(insane);// 提示未定义
+		}}}
+		/*成功*/
+		/*立即执行函数*/
+		let strarr;
+		//(function strarry(){
+		//	strarr=s.split('');
+		//}())                    //这是es5 立即执行的写法  接下来我们测试es6 的立即执行写法
+		{
+			strarr=s.split('');
+		}
+		console.log(strarr);
+		console.log(strarr.join(','));
+		
+		if(true)
+			function nihao(){
+				return 1;
+			}
+	</script>
+</body>
+</html>
