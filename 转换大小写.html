@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+   var str="aBcdEfg";
+   var arr=[];
+   function zh(str){
+     for (let item of str) {
+       if (item === item.toUpperCase()) {
+         item = item.toLowerCase();
+       } else {
+         item = item.toUpperCase()
+       }
+       arr.push(item);
+     }
+   }
+   zh(str);
+   console.log(arr.join(''));
+</script>
+</body>
+</html>
