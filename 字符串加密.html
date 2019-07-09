@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串加密</title>
+</head>
+<body>
+<script>
+ function encode(str){
+   return btoa(encodeURIComponent(str));
+ }//加密
+ function decode(str){
+   return decodeURIComponent(atob(str))
+ }//解密
+ var s=encode("hellow world");
+ console.log(s);
+ console.log(decode(s));
+
+</script>
+</body>
+</html>
