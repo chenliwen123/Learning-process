@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组最大值 最小值</title>
+</head>
+<body>
+<script>
+  let a=[1,2,3,456,52,];
+  Array.prototype.max=function(){
+    return Math.max.apply(Array,this)
+  }
+  Array.prototype.min=function(){
+    return Math.min.apply(Array,this)
+  }
+console.log(a.max());
+console.log(a.min());
+  console.log('------------------------------------------');
+/*
+* 上面的是我能想到写法   Math.max.apply(Array,数组)    this就是数组
+*
+* 下面是我看不懂的写法  好像是es6  写法
+* */
+  const getMax =  arr =>  arr.reduce((acc, val) => acc = acc < val ? val : acc)
+  const getMin =  arr =>  arr.reduce((acc, val) => acc = acc > val ? val : acc)
+  console.log(getMax([25, 62, 91, 78, 34, 62])) // 91
+  console.log(getMin([25, 62, 91, 78, 34, 62])) // 25
+</script>
+</body>
+</html>
