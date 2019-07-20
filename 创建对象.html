@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>创建对象</title>
+</head>
+
+<body>
+	<script>
+	   var obj={};
+	   var obj=new Object();
+		
+		function person(name,age){
+			this.name=name;
+			this.age=age;
+			person.prototype.sayName=function(){alert(this.name);}
+		}
+		var f=new person('chenliwen','24');
+		console.log(f);
+	</script>
+</body>
+</html>
