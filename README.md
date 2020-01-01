@@ -29,3 +29,5 @@ js  parent  获取的是夫级的DOM元素 并不是夫级对象
 
 ## 1.1.3 在控制台输出 给当前页面所有DOM加边框
 "[].forEach.call($$("*"),function(a){ a.style.outline="1px solid #"+(~~(Math.random()*(1<<24))).toString(16) })"
+
+1
