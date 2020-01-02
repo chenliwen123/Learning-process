@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<style>
+	.div1{
+		width:500px;height:500px;float:left;background:#f00000;
+	}	
+	.div2{width:200px;height: 200px;background:pink;}
+</style>
+<body>
+	<div class="div1">
+	   <div class="div2">
+		
+		</div>
+	</div>
+	<script>
+	    window.onload=function(){
+			var onmouse=document.querySelectorAll('div')[0]
+			onmouse.onmouseenter=function(){
+			console.log("enter事件");
+				//进入时执行
+		     }
+			onmouse.onmouseleave=function(){
+				console.log("leave事件");
+				//离开事件  没有冒泡
+			}
+			onmouse.onmouseover=function(){
+				console.log("over事件");
+				//进入事件 有冒泡事件    子集也会触发
+			}
+			onmouse.onmousemove=function(){
+				console.log("move事件");
+				//鼠标在上移动 疯狂执行
+			}
+			onmouse.onmousedown=function(){
+				console.log("down事件");
+				//鼠标按下事件 有冒泡事件    子集也会触发
+			}
+			onmouse.onmouseout=function(){
+				console.log("out事件");
+				//离开事件 有冒泡事件    子集也会触发
+			}
+			onmouse.onmouseup=function(){
+				console.log("up事件");
+				//鼠标松开事件 有冒泡事件    子集也会触发
+			}
+		    onmouse.onmousewheel=function(){
+				console.log('wheel事件');
+				//滚轮效果 有冒泡事件
+			}
+		}
+	</script>
+</body>
+</html>

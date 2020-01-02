@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+	<button id="btn1">确定</button>
+	<script>
+	    var btn1=document.querySelector('#btn1');
+		function queding(){
+			alert('ssss');
+		}
+		$('#btn1').click(function(){
+			queding()
+		});
+		//jq 必须这么写
+		//$('#btn1').click(queding());  写好之后没有反应
+	</script>
+</body>
+</html>

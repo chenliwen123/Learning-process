@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+	<script>
+		var host=window.location;
+	var url = "https://baidu/kk?tab=stars&assetId=311&page=DETAIL&projectPhase=2";
+		function spliturl(str){
+			var obj={
+			};
+			str.split("?")[1].split("&").forEach(item=>{
+				var arr=[ key , value ]=item.split('=');
+				obj[arr[0]]=arr[1]
+				console.log(obj);
+			  }
+			)
+		}
+		spliturl(url);
+		console.log(host);
+		
+		// split("?") 分隔字符串成数组   以问号分隔
+		// forEach  js原生遍历数组
+		//定义对象后添加对象属性是 不能用obj.key   要用obj[key]=value
+		
+		
+//function splitUrl(url) {
+//    if(typeof url !== "string") return;
+//    var obj = {
+//		
+//	};
+//    url.split("?")[1].split("&").forEach(item => {
+//        var arr = [key, value] = item.split("=")
+//        obj[arr[0]] = arr[1];
+//    })
+//    console.log(obj);
+//}
+//splitUrl(url);
+	</script>
+</body>
+</html>
