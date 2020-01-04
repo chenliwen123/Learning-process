@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport">
-    <title>漫天的繁星啊</title>
+    <title>星星</title>
     <style>
         #grad1{
             overflow:hidden;
@@ -23,18 +23,19 @@
             position:absolute;
             left:0;top:0;
             border-radius:1px;
-            -webkit-animation: myfirst 8s infinite;
-            -o-animation: myfirst 8s infinite;
-            animation: myfirst 8s infinite;
+            -webkit-animation: myfirst 50s infinite normal;
+            -o-animation: myfirst 50s infinite normal;
+            animation: myfirst 50s infinite normal;
         }
-
         @keyframes myfirst {
             0%{
-                transform:perspective(800px) rotateZ(20deg) rotateX(40deg) rotateY(120deg);
+                transform:perspective(600px) rotateZ(0deg) rotateX(0deg) rotateY(0deg);
             }
-            100%{
-                transform:perspective(800px) rotateZ(20deg) rotateX(40deg) rotateY(0deg);
+            25%{
+                transform:perspective(600px) rotateZ(40deg) rotateX(40deg) rotateY(-120deg);
             }
+
+
         }
     </style>
 </head>
@@ -42,7 +43,6 @@
 <div id="grad1">
 </div>
 <script>
-
     function randomw() {
         return Math.random()*window.innerWidth;
     }
@@ -53,8 +53,6 @@
     // div.style.left=randomw()+'px'
     // div.style.top=randomh()+'px'
     // document.getElementById('grad1').appendChild(div);
-
-
     for (let i=0;i<500;i++){
         var div=document.createElement('div');
         div.style.left=randomw()+'px'
@@ -63,9 +61,6 @@
         div.style.opacity=Math.random();
         document.getElementById('grad1').appendChild(div);
     }
-
-
-
 </script>
 </body>
 </html>
