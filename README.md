@@ -14,7 +14,7 @@ http://fgm.cc/learn/
 
 
 
-js  parent  获取的是夫级的DOM元素 并不是夫级对象
+jq  parent  获取的是夫级的DOM元素 并不是夫级对象
 ## 1.1.2 css 伪选择器
 :first-letter   首字母 <br>
 :first-line     首行<br>
