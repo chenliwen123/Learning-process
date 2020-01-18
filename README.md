@@ -33,3 +33,8 @@ jq  parent  获取的是夫级的DOM元素 并不是夫级对象
 
 > user.api.it120.cc
 > 我再也不写后台端口了
+
+## 1.1.4   发现bilibili 弹幕接口
+https://api.bilibili.com/x/v1/dm/list.so?oid=143503300
+
+oid  是视频请求的第一个请求的 oid
