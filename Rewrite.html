@@ -6,11 +6,43 @@
 </head>
 <body>
 <script>
+    //正常写  没办法重写   定义了一个新的newpush
 window.onload=function () {
+    Array.prototype.newpush=function (sum) {
+        console.log('我调用了新的push')
+        this.push(sum);
+    }
     let arr=[1,2,3,4];
-    arr.push(5);
+    arr.newpush(5);
+    console.log(arr);
+
+//查看args 数据的  状态
+
+    function nihao(...args){
+       console.log(args);
+    }
+
+    nihao('push')
+// 开始重写
+    const arrayProto=Array.prototype
+    const arratmethods=Object.create(arrayProto);
+    const original=arrayProto['push']
+Object.defineProperty(arratmethods,'push',{
+    enumerable:false,
+    configurable:true,
+    writable:true,
+    value:function mutator(...args){
+        console.log(args)
+      const result = original.apply(this,args);
+      return result;
+    }
+})
+
+
+    arr.push(6)
     console.log(arr);
 }
 </script>
+
 </body>
 </html>
