@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>11111111</title>
+</head>
+<body>
+	<script src="http://cdn.bootcss.com/socket.io/1.7.1/socket.io.min.js"></script>
+	<script>
+		var socket = io.connect('http://localhost:88');
+		socket.emit('my other event', { my: 'data' });
+		socket.on('news', function (data) {
+		  console.log(data);
+		});
+	  </script>
+</body>
+</html>

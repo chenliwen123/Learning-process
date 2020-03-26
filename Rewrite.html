@@ -38,7 +38,7 @@ Object.defineProperty(arratmethods,'push',{
     }
 })
 
-
+    arr.__proto__=arratmethods;
     arr.push(6)
     console.log(arr);
 }

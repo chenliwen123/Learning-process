@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>查看js中 ... 用法</title>
+</head>
+<body>
+	<script>
+		var obj={
+			li:{
+				id:123,
+				name:"陈立文"
+			},
+			bo:{
+				id:456,
+				name:"李波"
+			},
+			zhang:{
+				id:789,
+				name:"张三"
+			}
+		}
+		console.log(obj);
+	console.log(Object.entries(obj));
+		let arr=[];
+		let arr2=[];
+			for( let [key,value] of Object.entries(obj)){//这个位置必须用  of  不能用  in    必须要Obejct.entries  对象的可枚举对象  
+				console.log(key);
+				console.log(value);
+				arr.push({
+					key:key,
+					...value
+				});
+		}///   ...  的用法就是把   value  里的东西原封不动的  继续放回去
+	
+		console.log(arr);
+
+
+		function sangedianyongfa (duixiang){
+			var s=[...duixiang];
+			console.log(s);//这三个点 可以是对象  数组 但是不能是 字符串   需要用 {} || [] 才可以使用 ... 
+		}
+		sangedianyongfa([1,2,3,4,5,6])
+	</script>
+</body>
+</html>
