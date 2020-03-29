@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <iframe src="iframe1.html"></iframe>
+    <script>
+        window.onmessage=function receiveMessage(e) {
+          console.log(e.data);
+        }
+        //window.addEventListener("message", receiveMessage, false);
+    </script>
+</body>
+</html>
