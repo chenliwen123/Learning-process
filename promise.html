@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise 用法</title>
+</head>
+<body>
+    <p>promise 的用法  之前用axios 的时候 感觉.then 就很舒服  现在我们来看看 它的用法</p>
+    <div id='test-promise-log'></div>
+    <script>
+/** 第一个实例  **********************************/
+function test(resolve,reject){
+    var timeOut=Math.random()*2;
+    setTimeout(function(){
+        if(timeOut>1){
+        resolve('200 ok')
+    }else{
+        reject('timeout in '+timeOut+'seconds')
+    }
+    },1000*timeOut)
+}
+
+var p1=new Promise(test);
+var p2=p1.then(function(result){
+    console.log('成功'+result);
+}).catch(function(reject){
+    console.log('失败'+reject)
+})
+
+
+
+/** 第二个实例  **********************************/
+
+
+
+// 清除log:
+var logging = document.getElementById('test-promise-log');
+while (logging.children.length > 1) {
+    logging.removeChild(logging.children[logging.children.length - 1]);
+}
+
+// 输出log到页面:
+function log(s) {
+    var p = document.createElement('p');
+    p.innerHTML = s;
+    logging.appendChild(p);
+}
+
+/* new Promise(function (resolve, reject) {
+    log('start new Promise...');
+    var timeOut = Math.random() * 2;
+    log('set timeout to: ' + timeOut + ' seconds.');
+    setTimeout(function () {
+        if (timeOut < 1) {
+            log('call resolve()...');
+            resolve('200 OK');
+        }
+        else {
+            log('call reject()...');
+            reject('timeout in ' + timeOut + ' seconds.');
+        }
+    }, timeOut * 1000);
+}).then(function (r) {
+    log('Done: ' + r);
+}).catch(function (reason) {
+    log('Failed: ' + reason);
+}); */
+
+/** 第三个实例  **********************************/
+
+// 0.5秒后返回input*input的计算结果:
+function multiply(input) {
+    return new Promise(function (resolve, reject) {
+        log('calculating ' + input + ' x ' + input + '...');
+        setTimeout(resolve, 500, input * input);
+    });
+}
+
+// 0.5秒后返回input+input的计算结果:
+function add(input) {
+    return new Promise(function (resolve, reject) {
+        log('calculating ' + input + ' + ' + input + '...');
+        setTimeout(reject, 500, input + input);
+    });
+}
+
+var p = new Promise(function (resolve, reject) {
+    log('start new Promise...');
+    resolve(123);
+});
+
+p.then(multiply)
+ .then(add)
+ .then(multiply)
+ .then(add)
+ .then(function (result) {
+    log('Got value: ' + result);
+}).catch(function (reject){
+    log('出错了');
+});
+
+/** 第四个实例  **********************************/
+
+var p6 = new Promise(function (resolve, reject) {
+    setTimeout(resolve, 500, 'P1');
+});
+var p7 = new Promise(function (resolve, reject) {
+    setTimeout(resolve, 600, 'P2');
+});
+// 同时执行p1和p2，并在它们都完成后执行then:
+Promise.all([p6, p7]).then(function (results) {
+    console.log(results); // 获得一个Array: ['P1', 'P2']
+});
+
+/** 第五个实例  **********************************/
+var p8 = new Promise(function (resolve, reject) {
+    setTimeout(resolve, 500, 'P1');
+});
+var p9 = new Promise(function (resolve, reject) {
+    setTimeout(resolve, 600, 'P2');
+});
+Promise.race([p8, p9]).then(function (result) {//  race  是看谁返回的早  谁返回的早用谁的  另一个回来直接销毁
+    console.log(result); // 'P1'
+});
+
+    </script>
+</body>
+</html>
