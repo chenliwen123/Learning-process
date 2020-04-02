@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+/*第一个实例***********************************************/
+ function out(time){
+            return new Promise(function(resolve,reject){
+                setTimeout(() => {
+                    resolve(time+200)
+                }, time);
+            })
+        }
+function ste1(time){
+    console.log('ste1:'+time);
+    return out(time)
+    }
+const time=300;
+out(time).then((res)=>{
+    ste1(res).then((res2)=>{
+        ste1(res2)
+        console.log(res2,res,time);
+    });
+}) 
+/*第二个实例***********************************************/
+ async function t(){
+
+    const a=new Promise(function(resolve,reject){
+        console.log(1);
+        resolve(9);
+        console.log(2);
+    })
+    const b=new Promise(function(resolve,reject){
+        console.log(3);
+        resolve(8);
+        console.log(4);
+    })
+
+    console.log(5);
+    let d=await b;
+    let c=await a;
+
+    console.log(d);
+    console.log(c);
+    console.log(6);
+}
+
+t();
+console.log(7);
+
+function zz(){
+        return new Promise(function(resolve){
+            resolve(123)
+    })
+}
+
+//输出1 2 3 4 5 7 8 9 6
+async function nihao(){
+    var s111=await zz();
+    console.log(s111)
+}
+setTimeout(nihao,2000);
+    </script>
+    <p>async 异步函数  await  是等 我执行完 在往下走</p>
+    <p>1，2，3，4，5，8，9，6，7，</p>
+</body>
+</html>
