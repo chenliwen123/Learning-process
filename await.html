@@ -53,8 +53,8 @@ t();
 console.log(7);
 
 function zz(){
-        return new Promise(function(resolve){
-            resolve(123)
+    return new Promise(function(resolve){
+        setTimeout(resolve, 2000,123);//setTimeout   的第三个参数 是给第一个函数传入的 值
     })
 }
 
@@ -63,9 +63,15 @@ async function nihao(){
     var s111=await zz();
     console.log(s111)
 }
-setTimeout(nihao,2000);
+
+window.onload=function(){
+    document.getElementById('nihao').addEventListener('click',function(){
+        nihao();
+    })
+}
     </script>
     <p>async 异步函数  await  是等 我执行完 在往下走</p>
     <p>1，2，3，4，5，8，9，6，7，</p>
+    <p id="nihao">你好</p>
 </body>
 </html>
