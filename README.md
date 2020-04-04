@@ -38,3 +38,9 @@ jq  parent  获取的是夫级的DOM元素 并不是夫级对象
 https://api.bilibili.com/x/v1/dm/list.so?oid=143503300
 
 oid  是视频请求的第一个请求的 oid
+
+## 1.1.5 默哀时 发下了网站全都灰灰的了  
+
+> 发下了css 新元素
+
+> -webkit-filter: grayscale();
