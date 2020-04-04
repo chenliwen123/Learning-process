@@ -25,7 +25,7 @@ jq  parent  获取的是夫级的DOM元素 并不是夫级对象
 :nth-last-child(n)  倒数第n个元素<br>
 :nth-of-type(n) 第n个元素 如果第二个元素是其他元素也生效<br>
 :nth-of-type(n) 倒数第n个元素<br>
-家里的git  提交不上去 难过
+
 
 ## 1.1.3 在控制台输出 给当前页面所有DOM加边框
 
