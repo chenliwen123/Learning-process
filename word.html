@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>word</title>
+    <style>
+        .div1{position:absolute;top:calc(50% - 10px);left:calc(50% - 125px)}
+    </style>
+</head>
+<body>
+    <ul id="ul">
+    </ul>
+    <div class="div1">
+        请输入单词<input type="text" id="val" oninput="keydown()">
+    </div>
+    <script>
+        let ul=document.getElementById('ul');
+        let arr={
+            "join":"将数组转换成字符串",
+            "split":"将字符串转换成数组",
+            "toString":"转换成字符串",
+            "String":"特殊类型转换成字符串",
+            "parseInt":"转换成整数",
+            "parseFloat":"转换成小数",
+            "split":"将字符串转换成数组",
+            "splice":"数组的添加修改删除(接收三个参数)",
+            "slice":"数组的删除(接收两个参数)",
+            "Number":"转换成数字类型",
+            "Boolean":"转换成布尔类型",
+            "navigator.userAgent":"获取当前浏览器信息",
+            "Switch":"case 循环函数",
+            "hasChildNodes":"是否存在子节点",
+            "firstChild":"获取一个节点",
+            "break":"结束当前循环",
+            "continue":"跳出当前循环",
+            "return":"函数返回",
+            "async/await":"异步函数同步写法",
+            "promise(resolve,reject)":"异步队列化",
+            "pop":"删除数组最后一项返回删除项",
+            "shift":"删除数组第一项返回删除项",
+            "push":"数组最后添加一项返回数组个数",
+            "unshift":"数组开头添加一项返回数组个数",
+            "length":"返回数组个数",
+            "typeof":"查看数据类型 返回数据类型",
+            "instanceof":"判断数据类型 返回布尔值",
+            "reverse":"数组倒叙",
+            "sort":"运行函数 把数组挨个传入",
+            "forEach":"遍历数组",
+            "every":"运行函数 有一个返回fasle 就返回false",
+            "some":"运行函数 有一个返回true 就返回true",
+            "filter":"运行函数 返回一个符合条件的数组",
+            "arguments":"函数接收的数组",
+            "mutations":"vuex 改变state 函数体",
+            "commit":"组件中调用 改变 state 的函数体 函数",
+            "...mapMutations":"组件中调用 改变 state 的函数",
+            "actions":"vuex 异步请求",
+            "...mapActions":"组件封装 vuex 异步请求",
+            "dispatch":"组件调用 vuex 异步请求",
+            "watch":"监听数据变换运行函数",
+            "computed":" 和methods 中一样的函数 需要返回值 会缓存",
+        };
+        function remote(){
+           while(ul.hasChildNodes()) 
+            { 
+                ul.removeChild(ul.firstChild); 
+            } 
+        }
+        insert();
+        function queren(){
+            let val=document.getElementById('val');
+            for(let item in arr){
+                if(item==val.value){
+                    delete arr[item];
+                    console.log("成功")
+                    break
+                }
+            }
+            val.value="";
+            insert();
+        }
+        function insert(){
+            remote();
+            let i=1;
+            for(let item in arr){
+            let creater=document.createElement('li');
+            let br=document.createElement('br');
+            let text=document.createTextNode(i+++"."+arr[item]);
+            ul.appendChild(creater.appendChild(text))
+            ul.appendChild(br)
+            }
+        }
+        function keydown(){
+            document.onkeydown=function(event){
+                if(event.keyCode==13){
+                    queren();  
+                }
+            }
+        }
+    </script>
+</body>
+</html>
