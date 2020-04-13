@@ -5,16 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>word</title>
     <style>
+        html,body{overflow:hidden;}
+        ul{list-style: none;margin:0;padding:0;height:910px;}
+        li{width:400px;float:left;}
         .div1{position:absolute;top:calc(50% - 10px);left:calc(50% - 125px);}
-        .success{position:absolute; top:20px; left:calc(50% - 125px); 
-            background:#66CC66; padding:10px 10px;width: 250px;
+        .success{position:absolute; bottom:30px; right:-270px; 
+            background:#66CC66; padding:5px 10px;width: 250px;
             text-align:center;color:#fff;border-radius:15px;
-            font-size:25px;letter-spacing:5px;animation:donghua 2s;}
-            @keyframes donghua
-            {
-                from {display:none;}
-                to {display:block;}
-            }
+            font-size:25px;letter-spacing:5px;
+            transition: all 1.2s;}
     </style>
 </head>
 <body>
@@ -23,11 +22,14 @@
     <div class="div1">
         请输入单词<input type="text" id="val" oninput="keydown()">
     </div>
-    <div class="success">
+    <div class="success" id="success">
         成功
     </div>
     <script>
+        let val=document.getElementById('val');
+        val.focus();
         let ul=document.getElementById('ul');
+        let success=document.getElementById('success');
         let arr={
             "join":"将数组转换成字符串",
             "split":"将字符串转换成数组",
@@ -47,6 +49,8 @@
             "break":"结束当前循环",
             "continue":"跳出当前循环",
             "return":"函数返回",
+            "focus":"聚焦事件",
+            "blur":"失去焦点事件",
             "async/await":"异步函数同步写法",
             "promise(resolve,reject)":"异步队列化",
             "pop":"删除数组最后一项返回删除项",
@@ -73,7 +77,9 @@
             "computed":" 和methods 中一样的函数 需要返回值 会缓存",
             "toLowerCase":"字母转化成小写",
             "trim":"去掉开头和尾部的空格",
-            "slot":"vue 插槽"
+            "slot":"vue 插槽",
+            "default":"默认",
+            "directive":"vue. 定义组件"
         };
         function remote(){
            while(ul.hasChildNodes()) 
@@ -83,11 +89,14 @@
         }
         insert();
         function queren(){
-            let val=document.getElementById('val');
+           
             for(let item in arr){
                 if(item==val.value){
                     delete arr[item];
-                    console.log("成功")
+                    success.style.right="40px";
+                    setTimeout(() => {
+                        success.style.right="-270px";
+                    }, 2500);
                     break
                 }
             }
@@ -98,11 +107,9 @@
             remote();
             let i=1;
             for(let item in arr){
-            let creater=document.createElement('li');
-            let br=document.createElement('br');
-            let text=document.createTextNode(i+++"."+arr[item]);
-            ul.appendChild(creater.appendChild(text))
-            ul.appendChild(br)
+            let li=document.createElement('li');
+            li.innerHTML=i+++"."+arr[item];
+            ul.appendChild(li)
             }
         }
         function keydown(){
