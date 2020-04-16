@@ -82,7 +82,15 @@
             "directive":"vue. 定义组件",
             "beforeEach":"vue 全局前置守卫",
             "locations.origin":"获取浏览器地址带端口",
-            "process.env.NODE_ENV":"VUE-cli 当前模式"
+            "process.env.NODE_ENV":"VUE-cli 当前模式",
+            "beforecreate":"创建VUE 实例后的钩子",
+            "created":"初始化 VUE 实例的钩子",
+            "beforemounte":"初始化VUE 根节点的钩子",
+            "mounted":"节点创建完成 可以渲染列表",
+            "beforeupdate":"VUE修改时的 钩子函数",
+            "updated":"VUE修改之后的钩子函数",
+            "beforedestroy":"销毁之前的钩子函数",
+            "destroy":"销毁之后的钩子函数",
         };
         function remote(){
            while(ul.hasChildNodes()) 
