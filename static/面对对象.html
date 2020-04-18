@@ -19,42 +19,49 @@ body{background:#000;text-align:center;font:12px/20px Arial;}
 </style>
 <script type="text/javascript">
 //获取ID
-var $ = function (id) {return typeof id === "string" ? document.getElementById(id) : id};
+var $ = function (id) {
+    return typeof id === "string" ? document.getElementById(id) : id// $ 根据id 获取dom   如果传进来的是 string 返回 dom 如果传进来的是数字 则返回数字
+};
 
 //获取tagName
-var $$ = function (tagName, oParent) {return (oParent || document).getElementsByTagName(tagName)};
+var $$ = function (tagName, oParent) {
+    return (oParent || document).getElementsByTagName(tagName) //获取标签 可以接收两个参数 如果传入的是两个参数的话 第一个参数是 需要返回的标签 第二个参数是 需要标签的夫级 
+    //如果传入一个标签得很话  父节点是 document
+};
 
 //自动播放对象
-var AutoPlay = function (id) {this.initialize(id)};
+var AutoPlay = function (id) {
+    this.initialize(id)
+};// 定义函数  对象函数
 
-AutoPlay.prototype = {
+AutoPlay.prototype = {//更改 AutoPlay 原型
 	initialize: function (id)
 	{
 		var oThis = this;
-		this.oBox = $(id);
-		this.oUl = $$("ul", this.oBox)[0];
-		this.aImg = $$("img", this.oBox);
-		this.timer = null;
-		this.autoTimer = null;
+		this.oBox = $(id);  //获取id box
+		this.oUl = $$("ul", this.oBox)[0];//获取box 下的第一个  ul
+		this.aImg = $$("img", this.oBox);// 获取box 下的所有img
+		this.timer = null;     //
+		this.autoTimer = null; //自动播放的 boolean
 		this.iNow = 0;
-		this.creatBtn();
-		this.aBtn = $$("li", this.oCount);				
+		this.creatBtn();//运行函数
+		this.aBtn = $$("li", this.oCount);	//获取创建了几个 li 标签 			
 		this.toggle();
 		this.autoTimer = setInterval(function ()
 		{
 			oThis.next()
-		}, 3000);		
+		}, 3000);		// 三秒后运行下一张
 		this.oBox.onmouseover = function ()
 		{
 			clearInterval(oThis.autoTimer)
-		};
+		};//鼠标经过的时候   停止定时器
 		this.oBox.onmouseout = function ()
 		{
 			oThis.autoTimer = setInterval(function ()
 			{
 				oThis.next()
-			}, 3000)	
-		};
+			}, 3000)	//重新开始之后  切换一次
+		};//离开这个ID 的时候  重新开始 定时器
 		for (var i = 0; i < this.aBtn.length; i++)
 		{
 			this.aBtn[i].index = i;
@@ -63,49 +70,51 @@ AutoPlay.prototype = {
 				oThis.iNow = this.index;
 				oThis.toggle()
 			}
-		}
+		}//鼠标经过 小点点的时候  运行的函数
 	},
 	creatBtn: function ()
 	{
-		this.oCount = document.createElement("ul");
-		this.oFrag = document.createDocumentFragment();
-		this.oCount.className = "count";
-		for (var i = 0; i < this.aImg.length; i++)
+		this.oCount = document.createElement("ul");// 创建标签 
+		this.oFrag = document.createDocumentFragment();//创建 临时标签  存节点用的
+		this.oCount.className = "count";// 创建的标签 添加count 
+		for (var i = 0; i < this.aImg.length; i++)//img 的个数
 		{
-			var oLi = document.createElement("li");
+			var oLi = document.createElement("li"); 
 			oLi.innerHTML = i + 1;
 			this.oFrag.appendChild(oLi)
-		}
-		this.oCount.appendChild(this.oFrag);
-		this.oBox.appendChild(this.oCount)
+		}//根据img 的个数 创建li 标签 用数字表示 并添加给 临时dom
+		this.oCount.appendChild(this.oFrag);// 临时dom  添加给ul	
+		this.oBox.appendChild(this.oCount)//创建的ul  添加给 获取的ID 标签
 	},
 	toggle: function ()
 	{
-		for (var i = 0; i < this.aBtn.length; i++) this.aBtn[i].className = "";
-		this.aBtn[this.iNow].className = "current";
-		this.doMove(-(this.iNow * this.aImg[0].offsetHeight))
+		for (var i = 0; i < this.aBtn.length; i++) this.aBtn[i].className = "";//去除所有标签的 class 
+		this.aBtn[this.iNow].className = "current";// 激活当前标签 
+		this.doMove(-(this.iNow * this.aImg[0].offsetHeight))//当前的图片 乘上图片的高度 传入
 	},
 	next: function ()
 	{	
-		this.iNow++;
+		this.iNow++; // 当前图片 加一   
 		this.iNow == this.aBtn.length && (this.iNow = 0);
+		// 当前的图片是不是最后一张 如果是最后一张 则从头开始
 		this.toggle()
 	},
 	doMove: function (iTarget)
 	{
 		var oThis = this;
-		clearInterval(oThis.timer);
-		oThis.timer = setInterval(function () 
+		clearInterval(oThis.timer);//停止定时器
+		oThis.timer = setInterval(function () //开始定时器
 		{
-			var iSpeed = (iTarget - oThis.oUl.offsetTop) / 5;
-			iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+			var iSpeed = (iTarget - oThis.oUl.offsetTop) / 5;// 传入进来的距离 
+			iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);//取整
 			oThis.oUl.offsetTop == iTarget ? clearInterval(oThis.timer) : (oThis.oUl.style.top = oThis.oUl.offsetTop + iSpeed + "px")
+			//如果传入的距离 和现在的相等 就停止定时器  否则就设置 之前的距离加上 刚刚计算过来的距离
 		}, 30)	
 	}
 };
-window.onload = function ()
+window.onload = function ()//加载完成页面 开始执行js
 {
-	new AutoPlay("box");
+	new AutoPlay("box");  //传入 id
 };
 </script>
 </head>
@@ -113,11 +122,11 @@ window.onload = function ()
 <div id="box">
     <div class="list">
         <ul>
-            <li><img src="img/01.jpg" width="490" height="170" /></li>
-            <li><img src="img/02.jpg" width="490" height="170" /></li>
-            <li><img src="img/03.jpg" width="490" height="170" /></li>
-            <li><img src="img/04.jpg" width="490" height="170" /></li>
-            <li><img src="img/05.jpg" width="490" height="170" /></li>
+            <li><img src="http://fgm.cc/learn/lesson10/img/01.jpg" width="490" height="170" /></li>
+            <li><img src="http://fgm.cc/learn/lesson10/img/02.jpg" width="490" height="170" /></li>
+            <li><img src="http://fgm.cc/learn/lesson10/img/03.jpg" width="490" height="170" /></li>
+            <li><img src="http://fgm.cc/learn/lesson10/img/04.jpg" width="490" height="170" /></li>
+            <li><img src="http://fgm.cc/learn/lesson10/img/05.jpg" width="490" height="170" /></li>
         </ul>
     </div>
 </div>

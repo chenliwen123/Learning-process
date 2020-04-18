@@ -91,6 +91,7 @@
             "updated":"VUE修改之后的钩子函数",
             "beforedestroy":"销毁之前的钩子函数",
             "destroy":"销毁之后的钩子函数",
+            "document.createDocumentFragment":"存 临时节点的函数",
         };
         function remote(){
            while(ul.hasChildNodes()) 
@@ -117,11 +118,13 @@
         function insert(){
             remote();
             let i=1;
+            let nodes=document.createDocumentFragment();
             for(let item in arr){
             let li=document.createElement('li');
             li.innerHTML=i+++"."+arr[item];
-            ul.appendChild(li)
+            nodes.appendChild(li)
             }
+            ul.appendChild(nodes);
         }
         function keydown(){
             document.onkeydown=function(event){
