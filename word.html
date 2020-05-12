@@ -20,7 +20,7 @@
     <ul id="ul">
     </ul>
     <div class="div1">
-        请输入单词<input type="text" id="val" oninput="keydown()">
+        请输入单词<input type="text" id="val" onkeyup="keydown()" oninput="c_input()">
     </div>
     <div class="success" id="success">
         成功
@@ -138,6 +138,27 @@
                 }
             }
         }
+function c_input(){
+    obj.hahah =val.value
+}
+let obj={}
+    Object.defineProperties(obj,{
+        _hahah:{
+            writable:true,
+            value:2004
+        },
+        hahah:{
+            get:function(){
+                this._hahah=val.value
+                return this._hahah
+            },
+            set:function(data){
+                this._hahah=data;    
+                val.value=data;            
+            }
+        }
+})
+        
     </script>
 </body>
 </html>
