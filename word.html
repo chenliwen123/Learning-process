@@ -95,7 +95,8 @@
             "@keyup.enter.native":"vue 回车提交",
             "JSON.parse":"转换成对象",
             "JSON.stringify":"转换成字符串",
-            "this.$nextTick":"等dom 执行的时候再执行"
+            "this.$nextTick":"等dom 执行的时候再执行",
+            "hasOwnProperty":"判断对象是否存在某个键"
 
         };
         function remote(){
@@ -106,17 +107,13 @@
         }
         insert();
         function queren(){
-           
-            for(let item in arr){
-                if(item==val.value){
-                    delete arr[item];
+                if(arr.hasOwnProperty(val.value)){
+                    delete arr[val.value];
                     success.style.right="40px";
                     setTimeout(() => {
                         success.style.right="-270px";
                     }, 2500);
-                    break
                 }
-            }
             val.value="";
             insert();
         }
@@ -148,6 +145,8 @@ let obj={}
             value:2004
         },
         hahah:{
+            configurable:true,
+            enumerable:true,
             get:function(){
                 this._hahah=val.value
                 return this._hahah
@@ -157,8 +156,7 @@ let obj={}
                 val.value=data;            
             }
         }
-})
-        
+})        
     </script>
 </body>
 </html>
