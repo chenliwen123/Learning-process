@@ -43,3 +43,7 @@ oid  是视频请求的第一个请求的 oid
 > 发下了css 新元素
 
 > -webkit-filter: grayscale();
+
+...css
+  -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
+...
