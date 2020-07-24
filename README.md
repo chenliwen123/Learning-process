@@ -55,5 +55,5 @@ oid  是视频请求的第一个请求的 oid
   // 实现了 Object 支持indexOf 
   let obj = {a:1,b:2,c:3}
   Object.keys(obj)  // 这样返回的是一个数组
-  Object.keys(obj).indexOf('b') // 1
+  Object.keys(obj).indexOf('b') // 1     牛逼~~~
  ```
