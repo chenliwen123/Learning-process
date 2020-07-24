@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>word</title>
     <style>
-        html,body{overflow:hidden;}
+        html,body{overflow:hidden;position:relative;}
         ul{list-style: none;margin:0;padding:0;height:910px;}
         li{width:400px;float:left;}
         .div1{position:absolute;top:calc(50% - 10px);left:calc(50% - 125px);}
@@ -96,29 +96,24 @@
             "JSON.parse":"转换成对象",
             "JSON.stringify":"转换成字符串",
             "this.$nextTick":"等dom 执行的时候再执行",
-            "hasOwnProperty":"判断对象是否存在某个键"
+            "hasOwnProperty1":"判断对象是否存在某个键"
 
         };
         function remote(){
-           while(ul.hasChildNodes()) 
-            { 
-                ul.removeChild(ul.firstChild); 
-            } 
+            ul.getElementsByTagName('li')[Object.keys(arr).indexOf(arguments[0])].remove()
         }
         insert();
         function queren(){
                 if(arr.hasOwnProperty(val.value)){
-                    delete arr[val.value];
+                    remote(val.value)
                     success.style.right="40px";
                     setTimeout(() => {
                         success.style.right="-270px";
                     }, 2500);
                 }
             val.value="";
-            insert();
         }
         function insert(){
-            remote();
             let i=1;
             let nodes=document.createDocumentFragment();
             for(let item in arr){
@@ -156,7 +151,7 @@ let obj={}
                 val.value=data;            
             }
         }
-})        
+})
     </script>
 </body>
 </html>

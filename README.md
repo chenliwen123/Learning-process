@@ -44,6 +44,16 @@ oid  是视频请求的第一个请求的 oid
 
 > -webkit-filter: grayscale();
 
-...css
+```css
   -webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;
-...
+```
+
+
+ > 主要改造 word.html 
+ ```js
+  //对象属性不能定义 原型属性
+  // 实现了 Object 支持indexOf 
+  let obj = {a:1,b:2,c:3}
+  Object.keys(obj)  // 这样返回的是一个数组
+  Object.keys(obj).indexOf('b') // 1
+ ```
