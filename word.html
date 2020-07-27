@@ -5,22 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>word</title>
     <style>
-        html,body{overflow:hidden;position:relative;}
-        ul{list-style: none;margin:0;padding:0;height:910px;}
+        html,body{overflow:hidden;position:relative;width: 100%;height: 100vh;}
+        ul{list-style: none;margin:0;padding:0;}
         li{width:400px;float:left;}
-        .div1{position:absolute;top:calc(50% - 10px);left:calc(50% - 125px);}
+        .div1{position:absolute;top:calc(50% - 10px);left:calc(50% - 125px);cursor: pointer;z-index: 10;padding:10px;background:#fff;box-shadow: 0px 0px 15px #ccc;}
         .success{position:absolute; bottom:30px; right:-270px; 
             background:#66CC66; padding:5px 10px;width: 250px;
             text-align:center;color:#fff;border-radius:15px;
             font-size:25px;letter-spacing:5px;
             transition: all 1.2s;}
+        .not-select{
+            -moz-user-select:none; /*火狐*/
+            -webkit-user-select:none; /*webkit浏览器*/
+            -ms-user-select:none; /*IE10*/
+            -khtml-user-select:none; /*早期浏览器*/
+            user-select:none;
+        }
+        /* input{outline-width:0 !important;}
+        input[type="text"]:focus, 
+        input[type="password"]:focus { 
+            border: none !important;
+            outline:auto;
+            outline-width:0 !important;
+        } */
     </style>
 </head>
 <body>
     <ul id="ul">
     </ul>
-    <div class="div1">
-        请输入单词<input type="text" id="val" onkeyup="keydown()" oninput="c_input()">
+    <div class="div1 not-select" id="div1">
+        请输入单词：<input type="text" id="val" onkeyup="keydown()" oninput="c_input()">
     </div>
     <div class="success" id="success">
         成功
@@ -100,12 +114,14 @@
 
         };
         function remote(){
-            ul.getElementsByTagName('li')[Object.keys(arr).indexOf(arguments[0])].remove()
+            if(ul.getElementsByTagName('li')[Object.keys(arr).indexOf(arguments[0])].style.visibility === "hidden"){return true}
+            ul.getElementsByTagName('li')[Object.keys(arr).indexOf(arguments[0])].style.visibility = "hidden"
         }
         insert();
         function queren(){
                 if(arr.hasOwnProperty(val.value)){
-                    remote(val.value)
+                    let transition = remote(val.value)
+                    if(transition){return}
                     success.style.right="40px";
                     setTimeout(() => {
                         success.style.right="-270px";
@@ -152,6 +168,28 @@ let obj={}
             }
         }
 })
+
+window.onload=function(){
+    let div1=document.getElementById('div1');
+    let drag=false;
+    let iL=iT=0;
+    div1.addEventListener('mousedown',function(event){
+        if(event.path[0].tagName == "INPUT")return
+        drag=true;
+        var event = event || window.event;
+		iL=event.offsetX;
+        iT=event.offsetY;
+    });
+    document.addEventListener('mousemove',function(event){
+        if(!drag)return false;
+        var event = event || window.event;
+        div1.style.left=event.clientX - iL + "px";
+        div1.style.top=event.clientY - iT +"px";
+    })
+    div1.onmouseup=document.onmouseup=function(){
+		drag=false;
+    }
+}
     </script>
 </body>
 </html>
