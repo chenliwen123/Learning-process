@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>proxy</title>
+</head>
+<body>
+    <script>
+        var pro = new Proxy({},{
+            get:function(target,property){
+
+                console.log(target);
+                console.log(property);
+                console.log(arguments);
+                return 35
+            },
+            set:function(){}
+        })
+        pro.time
+    </script>
+</body>
+</html>

@@ -15,6 +15,12 @@
 		//appendChild 正常支持IE与谷歌
 	    //document.getElementsByTagName('head')[0].append(script);  //这是在head标签后添加script变量中的标签
         //IE8-- IE11不支持append 谷歌正常支持这个属性
+		function parseElement(htmlString){
+			return new DOMParser().parseFromString(htmlString,'text/html').body
+			//用我们传给它的字符串 创建了个 HTML  然后再返回我们传入的dom
+		}
+		document.getElementsByTagName('body')[0].appendChild(parseElement('<div>是是是</div>'))
 	</script>
+	
 </body>
 </html>

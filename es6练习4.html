@@ -7,53 +7,81 @@
 
 <body>
 	<script>
-	    let x=0;
-		let y=9;
-		console.log(x,y);
-		[x,y]=[y,x];
-		console.log(x,y);
-		//数据解构返回数组
-		var fn1=function(){
-			return [1,2,3];
+		const { log } = console;
+		log('你好');
+
+
+		let obj  = {};
+		let arr = [];
+
+		({bar:obj.name,zrr:arr[0]} = {bar:'chen',zrr:true})
+
+		log(obj)
+		for(let [key,value] in obj){
+			log(key+','+value)
 		}
-		var [a,b,c]=fn1();
-		console.log(a,b,c);
-		//数据解构返回对象
-		var fn2=function(){
-			return {
-				footer:1,
-				header:2,
-			}
+		log(arr)
+		let jsondata = {
+			code : '200',
+			data:[999,888,'sss11'],
+			status:'ok'
 		}
-		var {footer,header}=fn2();
-		console.log(footer,header);
-		//传入数组  用数组接收
-		console.log("传入对象  用数组接收");
-		function fn3([x,y,z]){
-			console.log(x);
-			console.log(y);
-			console.log(z);
-		}
-		//传入对象
-		function fn4({x,y,z}){
-			console.log(x);
-			console.log(y);
-			console.log(z);
-		}
-		fn3([1,2,3]);
-		fn4({x:3,y:2,z:1});
-		//快速获取json数据
-		console.log("快速获取数据");
-		document.write("快速获取数据");
-		var jsondata={
-			id:42,
-			status:"ok",
-			data:[200,4],
-		}
-		var obj={id,status,data:number}=jsondata;//可以正常解构 也可以正常传给新建的对象值
-		console.log(id);
-		console.log(status);
-		console.log(number);
+		let {code,status,data:number} = jsondata
+
+		log(code);
+		log(status);
+		log(number);
+		const map = new Map;
+		map.set('name','cenliwen');
+
+		log(map)
+	    // let x=0;
+		// let y=9;
+		// console.log(x,y);
+		// [x,y]=[y,x];
+		// console.log(x,y);
+		// //数据解构返回数组
+		// var fn1=function(){
+		// 	return [1,2,3];
+		// }
+		// var [a,b,c]=fn1();
+		// console.log(a,b,c);
+		// //数据解构返回对象
+		// var fn2=function(){
+		// 	return {
+		// 		footer:1,
+		// 		header:2,
+		// 	}
+		// }
+		// var {footer,header}=fn2();
+		// console.log(footer,header);
+		// //传入数组  用数组接收
+		// console.log("传入对象  用数组接收");
+		// function fn3([x,y,z]){
+		// 	console.log(x);
+		// 	console.log(y);
+		// 	console.log(z);
+		// }
+		// //传入对象
+		// function fn4({x,y,z}){
+		// 	console.log(x);
+		// 	console.log(y);
+		// 	console.log(z);
+		// }
+		// fn3([1,2,3]);
+		// fn4({x:3,y:2,z:1});
+		// //快速获取json数据
+		// console.log("快速获取数据");
+		// document.write("快速获取数据");
+		// var jsondata={
+		// 	id:42,
+		// 	status:"ok",
+		// 	data:[200,4],
+		// }
+		// var obj={id,status,data:number}=jsondata;//可以正常解构 也可以正常传给新建的对象值
+		// console.log(id);
+		// console.log(status);
+		// console.log(number);
 	</script>
 </body>
 </html>
