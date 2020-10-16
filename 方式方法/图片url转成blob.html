@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间戳转换成时间</title>
+</head>
+<body>
+    <script>
+      function blobimg(){
+        var self = this;
+        var imgurl = ''
+            window.URL = window.URL || window.webkitURL;
+            if (typeof history.pushState == "function") {
+                var xhr = new XMLHttpRequest();    
+                xhr.open("get", "http://localhost:8000/sycqjysxm/web/public/images/timg.jpg", true);
+                xhr.responseType = "blob";
+                xhr.onload = function() {
+                    if (this.status == 200) {
+                        var blob = this.response;
+                        imgurl= window.URL.createObjectURL(blob);
+                    }
+                }
+                xhr.send();
+            } else {
+                alert('不支持转换')
+            }
+      }
+    </script>
+</body>
+</html>
