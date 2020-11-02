@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin="anonymous" integrity="sha384-+jvb+jCJ37FkNjPyYLI3KJzQeD8pPFXUra3B/QJFqQ3txYrUPIP1eOfxK4h3cKZP" src="https://lib.baomitu.com/vue/2.6.11/vue.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-OZmxTjkv7EQo5XDMPAmIkkvywVeXw59YyYh6zq8UKfkbor13jS+5p8qMTBSA1q+F" src="https://lib.baomitu.com/vue/2.6.11/vue.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script>
+        var vm = new Vue({
+            el:"#app",
+            data:{
+                timer:false,
+                screenWidth: document.body.clientWidth   // 这里是给到了一个默认值 （这个很重要）
+            },
+            methods:{
+                initdata:function(){
+                    console.log(11)
+                }
+            },
+            watch: {
+                screenWidth (val) {
+                    const that = this;
+                    if (!this.timer) {
+                        this.screenWidth = val
+                        this.timer = true
+                        let that = this
+                        setTimeout(function () {
+                            console.log(that.screenWidth)
+                            that.timer = false
+                        }, 400)
+                    }
+                }
+            },
+            mounted(){
+                const self = this;
+                window.addEventListener("resize", function() {
+                    return (() => {
+                        window.screenWidth= document.body.clientWidth;
+                        self.screenWidth= window.screenWidth;
+                        })();
+                    });
+            }
+        })
+    </script>
+</body>
+</html>
