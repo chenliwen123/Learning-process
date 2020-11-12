@@ -6,6 +6,7 @@
     <title>时间戳转换成时间</title>
 </head>
 <body>
+    <input type="file" id="addPhoto">
     <script>
       function blobimg(){
         var self = this;
@@ -26,6 +27,33 @@
                 alert('不支持转换')
             }
       }
+$('#addPhoto').on('change',function(){
+    var files = this.files
+    for(var i=0;i<files.length;i++){
+      var file = files[i]
+      uploadFile(file,function(id){
+        imgAry.push(file)
+        var reader = new FileReader();
+        var rs = reader.readAsArrayBuffer(file);
+        var blob = null;
+        reader.onload = function(e) {
+          if (typeof e.target.result === 'object') {
+            blob = new Blob([e.target.result])
+          } else {
+            blob = e.target.result
+          }
+          var imgDel = $('<i class="icon-removes imgDel"></i>').on('click',function(){
+            var pDom = $(this).parents('.imgItem')
+            delFile(imgAry,pDom.index(),id)
+            pDom.remove()
+          })
+          var imgItem = $("<div class='imgItem'><img src='"+ URL.createObjectURL(blob)+"'/></div>").append(imgDel)
+          $('#imgList').prepend(imgItem)
+          loading()
+        }
+      })
+    }
+  })
     </script>
 </body>
 </html>
