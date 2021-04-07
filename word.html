@@ -111,8 +111,13 @@
             "JSON.parse":"转换成对象",
             "JSON.stringify":"转换成字符串",
             "this.$nextTick":"等dom 执行的时候再执行",
-            "hasOwnProperty1":"判断对象是否存在某个键"
-
+            "hasOwnProperty1":"判断对象是否存在某个键",
+            "requestAnimationFrame":"js60帧动画",
+            "cancelAnimationFrame":"取消js60帧动画",
+            "Math.ceil":"向上取整",
+            "Math.floor":"向下取整",
+            "Math.round":"四舍五入",
+            "Math.random":"随机数",
         };
         function remote(){
             if(ul.getElementsByTagName('li')[Object.keys(arr).indexOf(arguments[0])].style.visibility === "hidden"){return true}
@@ -135,11 +140,9 @@
             for(let item in arr){
             let li=document.createElement('li');
             li.innerHTML=arr[item];
-            li.onmouseover = function(){
-               this.innerHTML =item;
-            }
-            li.onmouseout = function(){
-                li.innerHTML=arr[item];
+            li.title = item
+            li.onclick = function(){
+                alert(item)
             }
             nodes.appendChild(li)
             }
