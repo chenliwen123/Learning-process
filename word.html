@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>word</title>
     <style>
-        html,body{overflow:hidden;position:relative;width: 100%;height: 100vh;}
+        html,body{position:relative;width: 100%;height: 100vh;}
         ul{list-style: none;margin:0;padding:0;}
         li{width:400px;float:left;list-style: decimal-leading-zero;margin-left:30px;}
         li:hover{cursor: pointer;}
@@ -182,20 +182,36 @@ window.onload=function(){
     let div1=document.getElementById('div1');
     let drag=false;
     let iL=iT=0;
-    div1.addEventListener('mousedown',function(event){
+    // div1.addEventListener('mousedown',function(event){
+    //     if(event.path[0].tagName == "INPUT")return
+    //     drag=true;
+    //     var event = event || window.event;
+	// 	iL=event.offsetX;
+    //     iT=event.offsetY;
+    // });
+    // document.addEventListener('mousemove',function(event){
+    //     if(!drag)return false;
+    //     var event = event || window.event;
+    //     div1.style.left=event.clientX - iL + "px";
+    //     div1.style.top=event.clientY - iT +"px";
+    // })
+    // div1.onmouseup=document.onmouseup=function(){
+	// 	drag=false;
+    // }
+    div1.addEventListener('touchstart',function(event){
         if(event.path[0].tagName == "INPUT")return
         drag=true;
         var event = event || window.event;
 		iL=event.offsetX;
         iT=event.offsetY;
     });
-    document.addEventListener('mousemove',function(event){
+    document.addEventListener('touchmove',function(event){
         if(!drag)return false;
         var event = event || window.event;
         div1.style.left=event.clientX - iL + "px";
         div1.style.top=event.clientY - iT +"px";
     })
-    div1.onmouseup=document.onmouseup=function(){
+    div1.touchend=document.onmouseup=function(){
 		drag=false;
     }
 }
