@@ -6,7 +6,7 @@
     <title>word</title>
     <style>
         html,body{position:relative;width: 100%;height: 100vh;}
-        ul{list-style: none;margin:0;padding:0;}
+        ul{list-style: none;margin:0;padding:0;float:left;}
         li{width:400px;float:left;list-style: decimal-leading-zero;margin-left:30px;}
         li:hover{cursor: pointer;}
         .div1{position:absolute;top:calc(50% - 10px);left:calc(50% - 125px);cursor: pointer;z-index: 10;padding:10px;background:#fff;box-shadow: 0px 0px 15px #ccc;}
@@ -202,18 +202,21 @@ window.onload=function(){
         if(event.path[0].tagName == "INPUT")return
         drag=true;
         var event = event || window.event;
-		iL=event.offsetX;
-        iT=event.offsetY;
+		iL=event.changedTouches[0].clientX;
+		iT=event.changedTouches[0].clientY;
     });
     document.addEventListener('touchmove',function(event){
         if(!drag)return false;
         var event = event || window.event;
-        div1.style.left=event.clientX - iL + "px";
-        div1.style.top=event.clientY - iT +"px";
+        div1.style.left=event.changedTouches[0].clientX - iL + "px";
+        div1.style.top=event.changedTouches[0].clientY - iT + 400 +"px";
     })
-    div1.touchend=document.onmouseup=function(){
-		drag=false;
-    }
+    // document.onmouseup=function(){
+	// 	drag=false;
+    // }
+    document.addEventListener('touchend',function(event){
+        drag=false;
+    })
 }
     </script>
 </body>
