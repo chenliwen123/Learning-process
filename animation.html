@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing animation</title>
+</head>
+<style>
+  @keyframes typing {
+	from { width: 0 }
+}
+
+@keyframes caret {
+	50% { border-right-color: transparent; }
+}
+
+.animation {
+	font: bold 200% Consolas, Monaco, monospace;
+	white-space: nowrap;
+	overflow: hidden;
+	border-right: .05em solid;
+  display: inline-block;
+}
+</style>
+<body>
+  <div class="text" id="text">
+  </div>
+  <script>
+    let text = document.getElementById('text');
+    let span = document.createElement('p')
+    let s = '无敌了咳咳咳，还行吧'
+    span.innerHTML = s;
+    span.classList.add('animation')
+    span.classList.add('active')
+    text.appendChild(span)
+    span.setAttribute('style',`animation:typing ${s.length/10}s steps(${s.length}),caret 1s steps(1) infinite;width:${span.offsetWidth}px;`)
+  </script>
+</body>
+</html>
