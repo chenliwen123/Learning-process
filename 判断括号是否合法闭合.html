@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>判断括号是否合法闭合</title>
+</head>
+<body>
+  <script>
+    let a = '(123456)[123123],{dasds([{(}])adada}()'
+    function verification(value){
+      let extedn = '()[]{}';
+      let extednarr = extedn.split('');
+      let every = extednarr.some( item => {
+       return value.indexOf(item) > -1
+      })
+      if(every){
+        let temparr = []; // 用于存放当前的括号数据
+        let extednleft = ['{','[','('];
+        let extednright = ['}',']',')'];
+        let kuohao = ['{}','[]','()'];
+        for(item of value){
+          if(extedn.indexOf(item) > -1){
+            if(temparr.length == 0 && extednright.indexOf(item) > -1){
+              return false
+            }
+            temparr.push(item)
+            if(temparr.length > 1){
+              let rightindex = extednright.indexOf(temparr[temparr.length-1]);
+              let leftindex = extednleft.indexOf(temparr[temparr.length-2])
+              if(extednleft[leftindex] + extednright[rightindex] == kuohao[rightindex]){
+                temparr.splice(temparr.length-2,2)
+              }
+            }
+          }
+        }
+        return temparr.length > 0 ? false:true
+      }else{
+        return true
+      }
+    }
+    console.log(verification(a))
+  </script>
+</body>
+</html>
