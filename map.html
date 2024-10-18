@@ -69,7 +69,8 @@ var circle = new AMap.Circle({
     strokeOpacity: 1,  //线透明度
     strokeWeight: 3,  //线粗细度
     fillColor: "#ee2200",  //填充颜色
-    fillOpacity: 0.35 //填充透明度
+    fillOpacity: 0.35, //填充透明度
+    showIndoorMap: false //关闭室内地图
 });
 
 let timeid = true;
@@ -96,15 +97,6 @@ document.querySelector("#add-marker").onclick = function() {
 document.querySelector("#remove-marker").onclick = function() {
     timeid = false;
 }
- function getLocation() {
-            if (navigator.geolocation) {
-                // 如果浏览器支持geolocation
-                navigator.geolocation.getCurrentPosition(showPosition, showError);
-            } else {
-                // 如果浏览器不支持geolocation
-                document.getElementById('location').innerHTML = "您的浏览器不支持地理位置服务。";
-            }
-        }
 
 
  function showError(error) {
@@ -125,7 +117,12 @@ document.querySelector("#remove-marker").onclick = function() {
      }
      requestAnimationFrame(fun)
  }
- document.querySelector("#getNewPort").onclick = getLocation
+ document.querySelector("#getNewPort").onclick = () => {
+  navigator.geolocation.getCurrentPosition((position)=>{
+   alert(position.coords.longitude +'++++ '+position.coords.latitude)
+  }, showError);
+
+ }
 
 
  //显示地图层级与中心点信息
