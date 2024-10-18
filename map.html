@@ -79,7 +79,7 @@ const fun = () => {
   navigator.geolocation.watchPosition((position) => {
    var marker = new AMap.Marker({
     icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
-    position: [position.coords.longitude,position.coords.latitude],
+    position: [position.coords.longitude.toFixed(6),position.coords.latitude.toFixed(6)],
     anchor:'bottom-center'
   });
   map.add(marker);
@@ -119,7 +119,7 @@ document.querySelector("#remove-marker").onclick = function() {
  }
  document.querySelector("#getNewPort").onclick = () => {
   navigator.geolocation.getCurrentPosition((position)=>{
-   alert(position.coords.longitude +'++++ '+position.coords.latitude)
+   alert(position.coords.longitude.toFixed(6) +'++++ '+position.coords.latitude.toFixed(6))
   }, showError);
 
  }
