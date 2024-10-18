@@ -49,8 +49,7 @@
     </div>
     <div class="input-item">
       <label>Circle：</label>
-      <button class="btn" id="add-circle" style="margin-right:1rem;">添加Circle</button>
-      <button class="btn" id="remove-circle">删除Circle</button>
+      <button class="btn" id="getNewPort" style="margin-right:1rem;">获取当前位置</button>
     </div>
   </div>
 <img src="https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png" class="container_img" alt="">
@@ -92,14 +91,39 @@ document.querySelector("#remove-marker").onclick = function() {
     map.setFitView();
     clearInterval(timeid);
 }
-document.querySelector("#add-circle").onclick = function() {
-    map.add(circle);
-    map.setFitView();
-}
-document.querySelector("#remove-circle").onclick = function() {
-    map.remove(circle);
-    map.setFitView();
-}
+ function getLocation() {
+            if (navigator.geolocation) {
+                // 如果浏览器支持geolocation
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                // 如果浏览器不支持geolocation
+                document.getElementById('location').innerHTML = "您的浏览器不支持地理位置服务。";
+            }
+        }
+
+ function showPosition(position) {
+  alert(position.coords.longitude +''+ position.coords.latitude)
+ }
+
+ function showError(error) {
+     // 处理获取位置信息时发生的错误
+     switch(error.code) {
+         case error.PERMISSION_DENIED:
+             document.getElementById('location').innerHTML = "用户拒绝对获取地理位置的请求。";
+             break;
+         case error.POSITION_UNAVAILABLE:
+             document.getElementById('location').innerHTML = "位置信息不可用。";
+             break;
+         case error.TIMEOUT:
+             document.getElementById('location').innerHTML = "请求用户地理位置超时。";
+             break;
+         case error.UNKNOWN_ERROR:
+             document.getElementById('location').innerHTML = "发生未知错误。";
+             break;
+     }
+ }
+ document.querySelector("#getNewPort").onclick = getLocation
+
 
  //显示地图层级与中心点信息
  function logMapinfo(){
