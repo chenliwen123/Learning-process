@@ -119,6 +119,8 @@ document.querySelector("#remove-marker").onclick = function() {
  }
  document.querySelector("#getNewPort").onclick = () => {
   navigator.geolocation.getCurrentPosition((position)=>{
+   map.setFitView();
+   map.setCenter([position.coords.longitude.toFixed(6), position.coords.latitude.toFixed(6)]); //设置地图中心点
    alert(position.coords.longitude.toFixed(6) +'++++ '+position.coords.latitude.toFixed(6))
   }, showError);
 
