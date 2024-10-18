@@ -32,8 +32,8 @@
 				}		
 			}
 			xmlhttp.open("post","http://192.168.3.10:11112/index/index/nihao2",true);
-			xmlhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-			xmlhttp.send("works_domain="+"info");
+			xmlhttp.setRequestHeader("Content-Type","application/json, text/plain, */*");
+			xmlhttp.send(JSON.stringify({works_domain:'info'}));
 		});
 	</script>
 </body>

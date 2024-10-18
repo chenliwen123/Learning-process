@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片翻转</title>
+</head>
+<body>
+  <style>
+    .container{
+      width: 500px;
+      height:500px;
+      position: relative;
+      perspective: 800px;
+    }
+    .one,.tow{
+      width: 500px;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color:#fff;
+      font-size: 50px;
+      transition: 0.3s all;
+      backface-visibility: hidden;
+      position: absolute;
+      left:0;
+      top:0;
+    }
+    .container:hover .one{
+      transform: rotateY(180deg);
+    }
+    .container:hover .tow{
+      transform: rotateY(0);
+    }
+    .one{
+      background: rgb(223, 27, 27);
+    }
+    .tow{
+      background: rgb(46, 231, 29);
+      transform: rotateY(-180deg);
+    }
+  </style>
+  <div class="container">
+    <div class="one">1</div>
+    <div class="tow">2</div>
+  </div>
+</body>
+</html>

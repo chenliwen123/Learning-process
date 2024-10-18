@@ -36,18 +36,22 @@
 		var tv,tt,num,width;
 	$(function(){
 		num=$('#zwchz li').length;
-		console.log(num);
+		// console.log(num);
 		width=$('#zwchz li').width();
-		var height=$('#zwchz li').height();
+		// var height=$('#zwchz li').height();
 		var ulwidth=$('#zwchz').css({width:width*num+'px'});
 		var tt=window.setInterval('zhixing()',2000);
 		var por=document.getElementById('por');
 		por.addEventListener('click',function(){
 			setTimeout('zhixing()',0);
+			clearInterval(tt);
+			tt=window.setInterval('zhixing()',2000);
 		});
 		var dor=document.getElementById('dor');
 		dor.addEventListener('click',function(){
 			setTimeout('zhixing2()',0);
+			clearInterval(tt);
+			tt=window.setInterval('zhixing()',2000);
 		});
 	});
 		function zhixing(){
