@@ -72,24 +72,29 @@ var circle = new AMap.Circle({
     fillOpacity: 0.35 //填充透明度
 });
 
-let timeid = null;
+let timeid = true;
+const fun = () => {
+  // const {lng,lat} = logMapinfo();
+  navigator.geolocation.watchPosition((position) => {
+   var marker = new AMap.Marker({
+    icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+    position: [position.coords.longitude,position.coords.latitude],
+    anchor:'bottom-center'
+  });
+  map.add(marker);
+  if(timeid){
+   requestAnimationFrame(fun)
+  }
+  }, showError, {enableHighAccuracy: true, timeout: 5000, maximumAge: 0})
+ 
+ }
 //事件绑定
 document.querySelector("#add-marker").onclick = function() {
-   clearInterval(timeid);
-   timeid = setInterval(() => {
-    const {lng,lat} = logMapinfo();
-    var marker = new AMap.Marker({
-        icon: "https://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
-        position: [lng,lat],
-        anchor:'bottom-center'
-    });
-     map.add(marker);
-    }, 3000);
+   timeid = true;
+   requestAnimationFrame(fun)
 }
 document.querySelector("#remove-marker").onclick = function() {
-    map.remove(marker);
-    map.setFitView();
-    clearInterval(timeid);
+    timeid = false;
 }
  function getLocation() {
             if (navigator.geolocation) {
@@ -101,26 +106,24 @@ document.querySelector("#remove-marker").onclick = function() {
             }
         }
 
- function showPosition(position) {
-  alert(position.coords.longitude +''+ position.coords.latitude)
- }
 
  function showError(error) {
      // 处理获取位置信息时发生的错误
      switch(error.code) {
          case error.PERMISSION_DENIED:
-             document.getElementById('location').innerHTML = "用户拒绝对获取地理位置的请求。";
+           console.log('用户拒绝对获取地理位置的请求。');
              break;
          case error.POSITION_UNAVAILABLE:
-             document.getElementById('location').innerHTML = "位置信息不可用。";
+           console.log('位置信息不可用。');
              break;
          case error.TIMEOUT:
-             document.getElementById('location').innerHTML = "请求用户地理位置超时。";
+           console.log('请求用户地理位置超时。');
              break;
          case error.UNKNOWN_ERROR:
-             document.getElementById('location').innerHTML = "发生未知错误。";
+           console.log('发生未知错误。');
              break;
      }
+     requestAnimationFrame(fun)
  }
  document.querySelector("#getNewPort").onclick = getLocation
 
@@ -129,14 +132,8 @@ document.querySelector("#remove-marker").onclick = function() {
  function logMapinfo(){
    var zoom = map.getZoom(); //获取当前地图级别
    var center = map.getCenter(); //获取当前地图中心位置
-   console.log(zoom);
-   console.log(center.toString());
    return {lng:center.lng,lat:center.lat}
  };
-
-  //绑定地图移动与缩放事件
-  map.on('moveend', logMapinfo);
-  map.on('zoomend', logMapinfo);
 
 </script>
 </body>
